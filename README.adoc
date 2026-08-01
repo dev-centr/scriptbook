@@ -1,0 +1,54 @@
+= Scriptbook
+:toc: preamble
+
+**Scriptbook** runs CentrMark (`.cmk`) playbooks on your machine and records output in **sidecars** — never by rewriting the document. Think Jupyter for scripts: narrative + `::: step` cells, playable from a CLI (DevCentr GUI later).
+
+* Markup: CentrMark `::: playbook` / `::: step` (see `spec/playbook-profile.adoc`)
+* Executor: this repo (library + `scriptbook` CLI)
+* Output: `<file.cmk>.runs/` (`spec/sidecar.adoc`)
+
+SLP / `::: tangle` is for **source** literate programming. Scriptbook is for **run on my machine** docs.
+
+== Build
+
+Requires link:https://dub.pm/[DUB] and a D compiler (DMD or LDC).
+
+[source,shell]
+----
+cd lib && dub build
+cd ../cli && dub build
+./bin/scriptbook version
+----
+
+On Windows, binaries land under `cli/bin/scriptbook.exe`.
+
+== Usage
+
+[source,shell]
+----
+scriptbook run examples/smoke.cmk
+scriptbook status examples/smoke.cmk
+scriptbook clean-runs examples/smoke.cmk
+----
+
+Flags:
+
+* `--yes` / `-y` — allow steps with `confirm=true`
+* `--dry-run` — record scripts without executing
+
+Shell backends (`shell=` prop): `auto` (prefer `nu`, else `bash`/`sh` or `pwsh`), `nu`, `sh`, `bash`, `pwsh`.
+
+Nushell helpers: `nu/scriptbook.nu`.
+
+== Examples
+
+* `examples/smoke.cmk` — CI smoke
+* `examples/gh-pages-https.cmk` — Cloudflare ↔ GitHub Pages HTTPS algorithm (see also `dev-centr/general-knowledge` how-to + `scripts/check-gh-pages-https.nu`)
+
+== Install (release)
+
+Download a binary from link:https://github.com/dev-centr/scriptbook/releases[GitHub Releases], or build from source as above.
+
+== License
+
+AGPL-3.0-or-later (see `LICENSE`).

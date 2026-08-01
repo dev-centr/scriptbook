@@ -1,0 +1,56 @@
+= Scriptbook sidecar schema
+:navtitle: Sidecar schema
+
+Run output is **never** written back into the `.cmk` source. Scriptbook writes a sidecar directory next to the document.
+
+== Path convention
+
+For document `foo.cmk`:
+
+----
+foo.cmk.runs/
+  index.json
+  <step-id>.json
+----
+
+Gitignore `*.cmk.runs/` in consuming repos.
+
+== `index.json`
+
+[source,json]
+----
+{
+  "runId": "uuid",
+  "playbookId": "gh-pages-https",
+  "sourcePath": "/abs/path/foo.cmk",
+  "startedAt": "2026-07-31T12:00:00Z",
+  "finishedAt": "2026-07-31T12:00:05Z",
+  "exitSummary": 0,
+  "stepOrder": ["dns-check", "pages-status"],
+  "results": [ /* StepResult objects */ ]
+}
+----
+
+== Per-step `<id>.json`
+
+[source,json]
+----
+{
+  "id": "dns-check",
+  "exitCode": 0,
+  "stdout": "...",
+  "stderr": "...",
+  "shell": "nu",
+  "startedAt": "...",
+  "finishedAt": "...",
+  "durationMs": 12,
+  "status": "ok",
+  "message": ""
+}
+----
+
+`status` values: `ok`, `failed`, `skipped`, `blocked`.
+
+== UI weave
+
+CLI `scriptbook status` and future DevCentr GUI load `.cmk` + sidecar and weave them for display. Authors edit only the `.cmk`.

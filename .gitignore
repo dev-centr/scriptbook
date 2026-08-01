@@ -1,0 +1,29 @@
+*
+
+# Allow-list
+!/.gitignore
+!/.github/
+!/lib/
+!/cli/
+!/nu/
+!/examples/
+!/spec/
+!/*.adoc
+!/LICENSE*
+!/README*
+
+!/.github/**
+!/lib/**
+!/cli/**
+!/nu/**
+!/examples/**
+!/spec/**
+
+# Build / sidecars
+**/bin/
+**/.dub/
+**/*.exe
+**/*.obj
+**/*.o
+**/*.lst
+**/*.cmk.runs/

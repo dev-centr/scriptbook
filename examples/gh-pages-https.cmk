@@ -1,0 +1,36 @@
+---
+title "GitHub Pages HTTPS via Cloudflare dance"
+---
+
+= Unfuck GitHub Pages HTTPS (Cloudflare)
+
+Narrative for humans; steps for Scriptbook. Prefer the Nushell checker in
+`dev-centr/general-knowledge/scripts/check-gh-pages-https.nu` for the full poll loop.
+This playbook documents the algorithm as runnable cells.
+
+Replace `OWNER/REPO` and `HOST` before running with real values (or use the Nu checker).
+
+::: playbook [id="gh-pages-https" shell="auto"]
+
+::: step [id="dns-check"]
+```
+echo "Resolve HOST and confirm grey-cloud (GitHub 185.199.x / 2606:50c0:), not Cloudflare proxy."
+echo "Companion: nu check-gh-pages-https.nu --repo OWNER/REPO --host HOST"
+```
+:::
+
+::: step [id="pages-status" when="dns-check"]
+```
+echo "gh api repos/OWNER/REPO/pages --jq '{cname,https_enforced,https_certificate}'"
+echo "Wait until https_certificate.state == approved (no request-cert button)."
+```
+:::
+
+::: step [id="enforce-https" when="pages-status" confirm=true]
+```
+echo "Enable Enforce HTTPS only after cert approved:"
+echo "echo '{\"https_enforced\":true}' | gh api -X PUT repos/OWNER/REPO/pages --input -"
+```
+:::
+
+:::

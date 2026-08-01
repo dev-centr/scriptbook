@@ -1,0 +1,10 @@
+= Changelog
+
+== 0.1.0 — 2026-07-31
+
+* Initial release: library + CLI (`run`, `status`, `clean-runs`)
+* CentrMark playbook/step profile subset parser
+* Sidecar runs under `<file.cmk>.runs/`
+* Shell backends: auto / nu / sh / bash / pwsh
+* Examples: smoke, gh-pages-https
+* Nushell helper module

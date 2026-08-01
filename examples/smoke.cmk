@@ -1,0 +1,15 @@
+---
+title "Smoke playbook"
+---
+
+= Smoke
+
+Minimal Scriptbook playbook for CI.
+
+::: playbook [id="smoke" shell="auto"]
+::: step [id="hello" cwd="."]
+```
+echo hello-from-scriptbook
+```
+:::
+:::

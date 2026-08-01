@@ -1,0 +1,44 @@
+= Scriptbook playbook profile (CentrMark)
+:navtitle: Playbook profile
+
+Scriptbook executes a **profile** of CentrMark directives. The CentrMark D parser treats these as generic block directives; Scriptbook (and later full AST consumers) give them meaning.
+
+Official host/script executor: this repository (`scriptbook`). Do **not** put `exec` inside CentrMark FFI.
+
+== Directives
+
+=== `::: playbook`
+
+Container. Props:
+
+* `id` — playbook id (sidecar metadata)
+* `shell` — default shell for steps: `auto` | `nu` | `sh` | `bash` | `pwsh`
+
+=== `::: step`
+
+Runnable cell. Props:
+
+* `id` (required for stable sidecars)
+* `cwd` — working directory (default `.`)
+* `shell` — override playbook default
+* `timeout` — reserved (v0.1 may ignore)
+* `env` — reserved
+* `confirm` — if true, requires `scriptbook run --yes`
+* `when` — prior step id that must have succeeded
+
+Body should contain one fenced code block; that fence's body is the script.
+
+== Example
+
+[source,centrmark]
+----
+::: playbook [id="demo" shell="auto"]
+::: step [id="hello"]
+```
+echo hello
+```
+:::
+:::
+----
+
+See also link:https://github.com/dev-centr/centrmark[CentrMark] informal spec and `examples/` in this repo.

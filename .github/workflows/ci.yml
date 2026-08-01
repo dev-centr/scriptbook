@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install LDC (Linux)
+        if: runner.os == 'Linux'
+        uses: dlang-community/setup-dlang@v1
+        with:
+          compiler: ldc-latest
+
+      - name: Install LDC (Windows)
+        if: runner.os == 'Windows'
+        uses: dlang-community/setup-dlang@v1
+        with:
+          compiler: ldc-latest
+
+      - name: Build library
+        working-directory: lib
+        run: dub build --compiler=ldc2
+
+      - name: Build CLI
+        working-directory: cli
+        run: dub build --compiler=ldc2
+
+      - name: Smoke run (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          ./cli/bin/scriptbook version
+          ./cli/bin/scriptbook run examples/smoke.cmk
+          ./cli/bin/scriptbook status examples/smoke.cmk
+          test -f examples/smoke.cmk.runs/index.json
+          ./cli/bin/scriptbook clean-runs examples/smoke.cmk
+
+      - name: Smoke run (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          .\cli\bin\scriptbook.exe version
+          .\cli\bin\scriptbook.exe run examples\smoke.cmk
+          .\cli\bin\scriptbook.exe status examples\smoke.cmk
+          if (-not (Test-Path examples\smoke.cmk.runs\index.json)) { throw "missing sidecar" }
+          .\cli\bin\scriptbook.exe clean-runs examples\smoke.cmk
