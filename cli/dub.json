@@ -1,8 +1,8 @@
 {
   "name": "scriptbook-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": ["Dev-Centr contributors"],
-  "description": "Scriptbook CLI — run / status / clean-runs for .cmk playbooks",
+  "description": "Scriptbook CLI — run / status / history / prohelp / clean-runs for .cmk playbooks",
   "license": "AGPL-3.0-or-later",
   "copyright": "Copyright (C) 2026 Dev-Centr contributors",
   "targetType": "executable",

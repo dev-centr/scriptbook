@@ -113,3 +113,45 @@ string readIndexRaw(string cmkPath)
 		return "";
 	return readText(p);
 }
+
+/// Parse last-run sidecar into structured form for `scriptbook history`.
+RunIndex readRunIndex(string cmkPath)
+{
+	import std.json : parseJSON, JSONValue;
+
+	RunIndex idx;
+	auto raw = readIndexRaw(cmkPath);
+	if (!raw.length)
+		return idx;
+	auto j = parseJSON(raw);
+	idx.runId = j["runId"].str;
+	idx.playbookId = j["playbookId"].str;
+	idx.sourcePath = j["sourcePath"].str;
+	idx.startedAt = j["startedAt"].str;
+	idx.finishedAt = j["finishedAt"].str;
+	idx.exitSummary = cast(int) j["exitSummary"].integer;
+	if ("stepOrder" in j)
+	{
+		foreach (s; j["stepOrder"].array)
+			idx.stepOrder ~= s.str;
+	}
+	if ("results" in j)
+	{
+		foreach (r; j["results"].array)
+		{
+			StepResult sr;
+			sr.id = r["id"].str;
+			sr.exitCode = cast(int) r["exitCode"].integer;
+			sr.stdoutText = r["stdout"].str;
+			sr.stderrText = r["stderr"].str;
+			sr.shell = r["shell"].str;
+			sr.startedAt = r["startedAt"].str;
+			sr.finishedAt = r["finishedAt"].str;
+			sr.durationMs = r["durationMs"].integer;
+			sr.status = r["status"].str;
+			sr.message = r["message"].str;
+			idx.results ~= sr;
+		}
+	}
+	return idx;
+}

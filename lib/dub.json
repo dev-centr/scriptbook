@@ -1,8 +1,8 @@
 {
   "name": "scriptbook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": ["Dev-Centr contributors"],
-  "description": "Scriptbook core library — parse CentrMark playbook profiles, run steps, write sidecars",
+  "description": "Scriptbook core library — parse CentrMark playbook profiles, run steps, write sidecars, prohelp",
   "license": "AGPL-3.0-or-later",
   "copyright": "Copyright (C) 2026 Dev-Centr contributors",
   "targetType": "library",

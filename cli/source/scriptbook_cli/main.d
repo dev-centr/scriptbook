@@ -6,10 +6,11 @@ import std.path : absolutePath;
 import std.stdio : stderr, writefln, writeln;
 
 import scriptbook.parse;
+import scriptbook.prohelp;
 import scriptbook.run;
 import scriptbook.sidecar;
 
-enum string CLI_VERSION = "0.1.0";
+enum string CLI_VERSION = "0.1.1";
 
 private void usage()
 {
@@ -18,10 +19,13 @@ private void usage()
 	writeln("Usage:");
 	writeln("  scriptbook run <file.cmk> [--yes] [--dry-run]");
 	writeln("  scriptbook status <file.cmk>");
+	writeln("  scriptbook history <file.cmk>");
 	writeln("  scriptbook clean-runs <file.cmk>");
+	writeln("  scriptbook prohelp");
 	writeln("  scriptbook version");
 	writeln("");
 	writeln("Run output is written to <file.cmk>.runs/ (sidecar). The .cmk is never modified.");
+	writeln("New to audit trails? Run: scriptbook prohelp");
 }
 
 private int cmdRun(string path, bool yes, bool dryRun)
@@ -59,6 +63,7 @@ private int cmdRun(string path, bool yes, bool dryRun)
 		}
 	}
 	writefln("sidecar: %s", runsDirFor(abs));
+	writeln("Tip: scriptbook history " ~ path ~ "  |  scriptbook prohelp");
 	return idx.exitSummary == 0 ? 0 : idx.exitSummary;
 }
 
@@ -72,17 +77,57 @@ private int cmdStatus(string path)
 	auto abs = absolutePath(path);
 	auto pb = parsePlaybook(readText(abs), abs);
 	writefln("playbook: %s (%s steps)", pb.id, pb.steps.length);
+	writefln("source: %s", abs);
+	writefln("runs dir: %s", runsDirFor(abs));
 	foreach (s; pb.steps)
 		writefln("  - %s  shell=%s cwd=%s confirm=%s when=%s", s.id, s.shell, s.cwd, s.confirm, s.when);
 
 	if (!hasRuns(abs))
 	{
-		writeln("no sidecar runs yet (run: scriptbook run " ~ path ~ ")");
+		writeln("");
+		writeln("no sidecar runs yet — this playbook has not been recorded as run on this machine.");
+		writeln("  run:     scriptbook run " ~ path);
+		writeln("  prohelp: scriptbook prohelp");
 		return 0;
 	}
 	writeln("");
-	writeln("last run index:");
+	writeln("last run was recorded. Use `scriptbook history` for a readable table, or see raw index:");
 	writeln(readIndexRaw(abs));
+	return 0;
+}
+
+private int cmdHistory(string path)
+{
+	if (!exists(path))
+	{
+		stderr.writeln("file not found: " ~ path);
+		return 1;
+	}
+	auto abs = absolutePath(path);
+	if (!hasRuns(abs))
+	{
+		writeln("No run history for: " ~ abs);
+		writeln("Runs directory would be: " ~ runsDirFor(abs));
+		writeln("Execute once with: scriptbook run " ~ path);
+		writeln("Learn more: scriptbook prohelp");
+		return 0;
+	}
+	auto idx = readRunIndex(abs);
+	writefln("Playbook: %s", idx.playbookId.length ? idx.playbookId : "(unknown)");
+	writefln("Source:   %s", idx.sourcePath.length ? idx.sourcePath : abs);
+	writefln("Run id:   %s", idx.runId);
+	writefln("Started:  %s", idx.startedAt);
+	writefln("Finished: %s", idx.finishedAt);
+	writefln("Exit:     %s", idx.exitSummary);
+	writeln("");
+	writeln("Step results:");
+	foreach (r; idx.results)
+	{
+		writefln("  [%s] %-24s exit=%-3s %6s ms  %s",
+			r.status, r.id, r.exitCode, r.durationMs, r.message);
+	}
+	writefln("\nSidecar path: %s", runsDirFor(abs));
+	writeln("OS-wide logs (syslog/journal/Event Viewer): scriptbook prohelp");
 	return 0;
 }
 
@@ -113,6 +158,9 @@ int main(string[] args)
 	case "--help":
 	case "-h":
 		usage();
+		return 0;
+	case "prohelp":
+		printProhelp();
 		return 0;
 	case "run":
 		{
@@ -147,6 +195,13 @@ int main(string[] args)
 			return 1;
 		}
 		return cmdStatus(args[2]);
+	case "history":
+		if (args.length < 3)
+		{
+			usage();
+			return 1;
+		}
+		return cmdHistory(args[2]);
 	case "clean-runs":
 		if (args.length < 3)
 		{

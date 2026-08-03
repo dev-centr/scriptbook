@@ -1,5 +1,11 @@
 = Changelog
 
+== 0.1.1 — 2026-08-03
+
+* `scriptbook history` — readable last-run table from sidecar index
+* `scriptbook prohelp` — discoverability for `.cmk.runs/` plus OS audit surfaces (journal / Event Viewer / syslog)
+* `status` clarifies when no run has been recorded yet
+
 == 0.1.0 — 2026-07-31
 
 * Initial release: library + CLI (`run`, `status`, `clean-runs`)
