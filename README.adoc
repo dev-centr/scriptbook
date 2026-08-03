@@ -58,4 +58,10 @@ Download a binary from link:https://github.com/dev-centr/scriptbook/releases[Git
 
 == License
 
-AGPL-3.0-or-later (see `LICENSE`).
+*Centr Source License 1.0 — Branding (CSL-1.0-B)*. See link:LICENSE[LICENSE].
+Incorporation (linking/bundling in another product) is allowed; Scriptbook
+branding is reserved. Family overview:
+link:https://github.com/dev-centr/devcentr/blob/main/docs/modules/publishing/pages/licensing.adoc[DevCentr Licensing].
+
+Previously AGPL-3.0-or-later (through 0.1.1 history); relicensed 2026-08-03.
+Git history was *not* rewritten.

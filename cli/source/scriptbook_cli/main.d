@@ -10,7 +10,7 @@ import scriptbook.prohelp;
 import scriptbook.run;
 import scriptbook.sidecar;
 
-enum string CLI_VERSION = "0.1.1";
+enum string CLI_VERSION = "0.1.2";
 
 private void usage()
 {

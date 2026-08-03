@@ -1,20 +1,3 @@
-Scriptbook is licensed under the Centr Source License 1.0 — Branding (CSL-1.0-B).
-
-COPYRIGHT NOTICE
-Copyright (c) 2026 Dev-Centr contributors / AMDphreak
-Canonical repository: https://github.com/dev-centr/scriptbook
-
-BRANDING (reserved; not licensed)
-"Scriptbook", "Dev-Centr Scriptbook", related logos and confusingly similar marks.
-
-This project was previously offered under AGPL-3.0-or-later. As of 2026-08-03,
-new distributions use CSL-1.0-B. No ANL terms apply to Scriptbook at this time.
-
-The full CSL-1.0-B text follows (also in licenses/CSL-1.0-B.txt and
-https://github.com/dev-centr/devcentr/tree/main/licenses).
-
-================================================================================
-
 CENTR SOURCE LICENSE 1.0 — BRANDING (CSL-1.0-B)
 
 Copyright (c) the copyright holders listed in the Software distribution.
@@ -169,5 +152,4 @@ approved Open Source license. For distro policies that require OSI licenses,
 see project documentation strategy templates.
 
 Contact the copyright holder via the canonical project repository for
-Branding permission or commercial terms:
-https://github.com/dev-centr/scriptbook
+Branding permission or commercial terms.

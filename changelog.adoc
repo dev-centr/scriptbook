@@ -1,5 +1,10 @@
 = Changelog
 
+== 0.1.2 — 2026-08-03
+
+* Relicensed to *CSL-1.0-B* (Centr Source License — Branding); was AGPL-3.0-or-later
+* History not rewritten; tags/commits prior to this release remain under AGPL as published
+
 == 0.1.1 — 2026-08-03
 
 * `scriptbook history` — readable last-run table from sidecar index

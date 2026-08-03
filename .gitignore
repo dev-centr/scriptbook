@@ -11,6 +11,8 @@
 !/*.adoc
 !/LICENSE*
 !/README*
+!/licenses/
+!/licenses/**
 
 !/.github/**
 !/lib/**
