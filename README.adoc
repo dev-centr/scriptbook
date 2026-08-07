@@ -3,21 +3,12 @@ ifndef::env-github[:icons: font]
 :toclevels: 2
 :sectanchors:
 
-ifndef::env-github[]
+[[readme-top]]
 image:https://img.shields.io/github/contributors/dev-centr/scriptbook.svg?style=for-the-badge[Contributors,link=https://github.com/dev-centr/scriptbook/graphs/contributors]
 image:https://img.shields.io/github/forks/dev-centr/scriptbook.svg?style=for-the-badge[Forks,link=https://github.com/dev-centr/scriptbook/network/members]
 image:https://img.shields.io/github/stars/dev-centr/scriptbook.svg?style=for-the-badge[Stars,link=https://github.com/dev-centr/scriptbook/stargazers]
 image:https://img.shields.io/github/issues/dev-centr/scriptbook.svg?style=for-the-badge[Issues,link=https://github.com/dev-centr/scriptbook/issues]
 image:https://img.shields.io/github/license/dev-centr/scriptbook.svg?style=for-the-badge[License,link=https://github.com/dev-centr/scriptbook/blob/main/LICENSE]
-endif::[]
-
-ifdef::env-github[]
-image:https://img.shields.io/github/contributors/dev-centr/scriptbook.svg?style=for-the-badge[Contributors]
-image:https://img.shields.io/github/forks/dev-centr/scriptbook.svg?style=for-the-badge[Forks]
-image:https://img.shields.io/github/stars/dev-centr/scriptbook.svg?style=for-the-badge[Stars]
-image:https://img.shields.io/github/issues/dev-centr/scriptbook.svg?style=for-the-badge[Issues]
-image:https://img.shields.io/github/license/dev-centr/scriptbook.svg?style=for-the-badge[License]
-endif::[]
 
 = Scriptbook
 
@@ -38,6 +29,8 @@ SLP / `::: tangle` is for **source** literate programming. Scriptbook is for **r
 
 Scriptbook executes CentrMark playbook documents and stores run history in sidecar files adjacent to the source document.
 
+link:#readme-top[back to top]
+
 == Installation
 
 Requires link:https://dub.pm/[DUB] and a D compiler (DMD or LDC).
@@ -52,6 +45,8 @@ cd ../cli && dub build
 On Windows, binaries land under `cli/bin/scriptbook.exe`.
 
 Download a binary from link:https://github.com/dev-centr/scriptbook/releases[GitHub Releases], or build from source as above.
+
+link:#readme-top[back to top]
 
 == Usage
 
@@ -83,6 +78,8 @@ Nushell helpers: `nu/scriptbook.nu`.
 * `examples/smoke.cmk` — CI smoke
 * `examples/gh-pages-https.cmk` — Cloudflare ↔ GitHub Pages HTTPS algorithm (see also `dev-centr/general-knowledge` how-to + `scripts/check-gh-pages-https.nu`)
 
+link:#readme-top[back to top]
+
 == License
 
 *Centr Source License 1.0 — Branding (CSL-1.0-B)*. See link:LICENSE[LICENSE].
@@ -93,9 +90,13 @@ link:https://github.com/dev-centr/devcentr/blob/main/docs/modules/publishing/pag
 Previously AGPL-3.0-or-later (through 0.1.1 history); relicensed 2026-08-03.
 Git history was *not* rewritten.
 
+link:#readme-top[back to top]
+
 == Contact
 
 DevCentr.org — support@devcentr.org
 
 * Project: https://github.com/dev-centr/scriptbook
 * Site: https://devcentr.org
+
+link:#readme-top[back to top]
