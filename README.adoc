@@ -3,7 +3,28 @@ ifndef::env-github[:icons: font]
 :toclevels: 2
 :sectanchors:
 
-[[readme-top]]
+ifdef::env-github[]
+++++
+<a id="readme-top"></a>
+<div align="center">
+<a href="https://github.com/dev-centr/scriptbook/graphs/contributors"><img src="https://img.shields.io/github/contributors/dev-centr/scriptbook.svg?style=for-the-badge" alt="Contributors"></a>
+<a href="https://github.com/dev-centr/scriptbook/network/members"><img src="https://img.shields.io/github/forks/dev-centr/scriptbook.svg?style=for-the-badge" alt="Forks"></a>
+<a href="https://github.com/dev-centr/scriptbook/stargazers"><img src="https://img.shields.io/github/stars/dev-centr/scriptbook.svg?style=for-the-badge" alt="Stars"></a>
+<a href="https://github.com/dev-centr/scriptbook/issues"><img src="https://img.shields.io/github/issues/dev-centr/scriptbook.svg?style=for-the-badge" alt="Issues"></a>
+<a href="https://github.com/dev-centr/scriptbook/blob/main/LICENSE"><img src="https://img.shields.io/github/license/dev-centr/scriptbook.svg?style=for-the-badge" alt="License"></a>
+<br />
+<h3 align="center">Scriptbook</h3>
+<p align="center">
+Scriptbook: play CentrMark .cmk script documents; sidecar run output (never rewrites the doc).<br /><br />
+<a href="https://github.com/dev-centr/scriptbook/issues">Report Bug</a>
+&middot;
+<a href="https://github.com/dev-centr/scriptbook/issues">Request Feature</a>
+</p>
+</div>
+++++
+endif::[]
+
+ifndef::env-github[]
 image:https://img.shields.io/github/contributors/dev-centr/scriptbook.svg?style=for-the-badge[Contributors,link=https://github.com/dev-centr/scriptbook/graphs/contributors]
 image:https://img.shields.io/github/forks/dev-centr/scriptbook.svg?style=for-the-badge[Forks,link=https://github.com/dev-centr/scriptbook/network/members]
 image:https://img.shields.io/github/stars/dev-centr/scriptbook.svg?style=for-the-badge[Stars,link=https://github.com/dev-centr/scriptbook/stargazers]
@@ -16,13 +37,11 @@ Scriptbook: play CentrMark .cmk script documents; sidecar run output (never rewr
 
 link:https://github.com/dev-centr/scriptbook/issues[Report Bug] ·
 link:https://github.com/dev-centr/scriptbook/issues[Request Feature]
-
+endif::[]
 **Scriptbook** runs CentrMark (`.cmk`) playbooks on your machine and records output in **sidecars** — never by rewriting the document. Think Jupyter for scripts: narrative + `::: step` cells, playable from a CLI (DevCentr GUI later).
-
 * Markup: CentrMark `::: playbook` / `::: step` (see `spec/playbook-profile.adoc`)
 * Executor: this repo (library + `scriptbook` CLI)
 * Output: `<file.cmk>.runs/` (`spec/sidecar.adoc`)
-
 SLP / `::: tangle` is for **source** literate programming. Scriptbook is for **run on my machine** docs.
 
 == About The Project
