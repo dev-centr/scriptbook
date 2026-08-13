@@ -1,34 +1,98 @@
 = Scriptbook playbook profile (CentrMark)
 :navtitle: Playbook profile
+:description: Directives PlayTime understands. Intents, not shell translation.
 
-Scriptbook executes a **profile** of CentrMark directives. The CentrMark D parser treats these as generic block directives; Scriptbook (and later full AST consumers) give them meaning.
+Write this so someone with no background can follow.
 
-Official host/script executor: this repository (`scriptbook`). Do **not** put `exec` inside CentrMark FFI.
+== What do I need?
+
+A `.cmk` file. The `scriptbook` CLI (Scriptbook the app). PlayTime is the library that actually runs the file.
+
+CentrMark treats these directives as generic blocks. This profile gives them meaning. Do **not** put `exec` inside CentrMark FFI.
+
+== Three layers
+
+See link:playtime.adoc[PlayTime, Scriptbook, and CentrMark]. Short version:
+
+* **CentrMark** = the file format
+* **PlayTime** = the engine that plays it
+* **Scriptbook** = the CLI/GUI that you type into
+
+== Do not translate shells
+
+Do **not** write one bash script and hope the Equivalence Engine rewrites it into PowerShell. That is a compiler, and we do not have one.
+
+.Do not put a bash script through a blender
+image::images/playtime-wrong-translator.svg[alt="A Linux apt script enters a hot-replace grinder and comes out as broken Windows commands"]
+
+Write either:
+
+. A **concrete** script cell (best in Nushell, which is already portable), or
+. An **intent** cell: name what you want (`cli.install`, tool `gh`). PlayTime asks the Equivalence Engine for the command that fits this computer.
 
 == Directives
 
 === `::: playbook`
 
-Container. Props:
+Container.
 
 * `id` — playbook id (sidecar metadata)
-* `shell` — default shell for steps: `auto` | `nu` | `sh` | `bash` | `pwsh`
+* `shell` — default shell for **glue** cells: `auto` | `nu` | `sh` | `bash` | `pwsh`
+
+`shell=` is for narrative glue. Install methods from the catalog are **argv** (no shell) unless the method says it needs a runtime.
 
 === `::: step`
 
-Runnable cell. Props:
+A runnable cell. It is either a script or an intent.
+
+Common props:
 
 * `id` (required for stable sidecars)
 * `cwd` — working directory (default `.`)
-* `shell` — override playbook default
-* `timeout` — reserved (v0.1 may ignore)
+* `shell` — override playbook default (glue cells only)
+* `timeout` — reserved
 * `env` — reserved
 * `confirm` — if true, requires `scriptbook run --yes`
 * `when` — prior step id that must have succeeded
+* `when-answer` — skip unless this answer matches (`pkg-format=appimage`)
+* `when-context` — skip unless the host matches (`windows/*`, `linux/debian/*`)
 
-Body should contain one fenced code block; that fence's body is the script.
+Intent props (no OS script in the body):
 
-== Example
+* `intent` — registered id, for example `cli.install`
+* `tool` — argument for `cli.install` (catalog tool id)
+* `bind` — id of a `::: choose` whose answer picks the format
+
+If `intent` is set, the body may be empty. PlayTime fills the command at play time.
+
+If `intent` is absent, the body should contain one fenced code block. That fence’s body is the script.
+
+=== `::: choose`
+
+Ask which **format** (or other catalog facet) to use. Not a global list of every Linux package type. Options are: this tool’s methods, kept only if this host can run them.
+
+* `id` — answer key
+* `prompt` — shown to the user
+* `intent` / `tool` — if set, PlayTime fills options from the Equivalence Engine
+
+Nested `::: option [id="winget" when-context="windows/*" formats="winget"]` is optional. If you omit options, the engine lists compatible methods.
+
+On the CLI there is no wizard yet:
+
+* One compatible method → use it
+* Several methods → pass `--format winget` or an answers file, or the run fails with a list
+
+=== `::: ask`
+
+Free-text (or yes/no) answer stored in the sidecar.
+
+* `id`, `prompt`
+
+=== `::: option`
+
+Child of `::: choose`. Props: `id`, `when-context`, `formats`.
+
+== Concrete example (script)
 
 [source,centrmark]
 ----
@@ -41,4 +105,47 @@ echo hello
 :::
 ----
 
-See also link:https://github.com/dev-centr/centrmark[CentrMark] informal spec and `examples/` in this repo.
+== Intent example (same file on every OS)
+
+[source,centrmark]
+----
+::: playbook [id="install-gh" shell="auto"]
+
+::: choose [id="pkg-format" prompt="How should we install gh?" intent="cli.install" tool="gh"]
+:::
+
+::: step [id="install" intent="cli.install" tool="gh" bind="pkg-format"]
+:::
+
+::: step [id="verify" when="install"]
+```
+gh --version
+```
+:::
+:::
+----
+
+== Realization vs method choice
+
+* **Realization** — same step, different command (`winget install GitHub.cli` vs `nix profile install nixpkgs#gh`). The Equivalence Engine owns this.
+* **Method choice** — same goal, extra satellite steps (AppImage needs a desktop file; MSI needs elevation). Use `::: choose` plus `when-answer` on those extra steps.
+
+The spine is almost always: detect → acquire → configure → verify. Windows vs Linux does not usually need two playbooks.
+
+== Format and shell are not one graph
+
+Do not invent context paths like `windows/pwsh/msi`. Shell is not a package format.
+
+.Columns, not a cube
+image::images/playtime-facets-not-lattice.svg[alt="Catalog table of os, format, runtime versus a forbidden path-segment lattice"]
+
+.The student asked: MSI or bash?
+image::images/playtime-two-doors.svg[alt="Two doors labeled MSI and bash; that is not a questionnaire"]
+
+* Format = which installer (msi, deb, flatpak, winget, …)
+* Shell = how a *string* would be parsed. Almost never an Equivalence Engine axis.
+* Runtime = rare constraint: this method **is** a script (`runtime bash` for `curl | bash`)
+
+`winget install GitHub.cli` is argv. Any shell can spawn it. Prefer spawning it with **no** shell.
+
+See also link:https://github.com/dev-centr/centrmark[CentrMark], link:sidecar.adoc[sidecars], and link:host-awareness.adoc[Host Awareness].

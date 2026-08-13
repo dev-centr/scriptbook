@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">Growth loop: catalogs bake into PlayTime, more machines, more playbooks</title>
+  <desc id="desc">A ratchet cycle from shared rules through CI bake, host snapshot, playbooks, and back to richer catalogs. Not a runtime deadlock.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .box { fill: #fff; stroke: #2c2c2c; stroke-width: 2; }
+      .bake { fill: #1f3a2e; }
+      .t-inv { font-family: Georgia, "Times New Roman", serif; fill: #f7f3e8; }
+      .s-inv { font-family: "Segoe UI", system-ui, sans-serif; fill: #e8f0ea; font-size: 12px; }
+      .arrow { stroke: #2c2c2c; stroke-width: 1.75; fill: none; marker-end: url(#m); }
+      .dash { stroke: #2c2c2c; stroke-width: 1.5; fill: none; stroke-dasharray: 6 4; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2c2c2c"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="920" height="430"/>
+  <text class="label" x="32" y="36">RATCHET -- BUILD TIME, NOT PLAY TIME</text>
+  <text class="t" x="32" y="68" font-size="22">Richer catalogs. Better bake. More machines. More books.</text>
+
+  <rect class="box" x="40" y="110" width="200" height="90" rx="4"/>
+  <text class="t" x="56" y="148" font-size="16">Rules catalogs</text>
+  <text class="s" x="56" y="174">probes + intents</text>
+
+  <path class="arrow" d="M250,155 H310"/>
+
+  <rect class="bake" x="320" y="110" width="200" height="90" rx="4"/>
+  <text class="t-inv" x="336" y="148" font-size="16">CI bake</text>
+  <text class="s-inv" x="336" y="174">EE as compiler</text>
+
+  <path class="arrow" d="M530,155 H590"/>
+
+  <rect class="box" x="600" y="110" width="260" height="90" rx="4"/>
+  <text class="t" x="616" y="148" font-size="16">Shipped PlayTime</text>
+  <text class="s" x="616" y="174">cascade inside the binary</text>
+
+  <path class="arrow" d="M730,200 V240"/>
+
+  <rect class="box" x="600" y="250" width="260" height="90" rx="4"/>
+  <text class="t" x="616" y="288" font-size="16">Playbooks on more hosts</text>
+  <text class="s" x="616" y="314">humans write intents</text>
+
+  <path class="dash" d="M600,295 H140 V200"/>
+
+  <rect class="box" x="40" y="250" width="200" height="90" rx="4"/>
+  <text class="t" x="56" y="288" font-size="16">New rows</text>
+  <text class="s" x="56" y="314">probes, methods, formats</text>
+
+  <text class="s" x="32" y="390">Forbidden loop: PlayTime asks EE "what OS am I?" in order to ask EE anything. That never starts.</text>
+  <text class="s" x="32" y="410">This loop clicks once per release. Offline wake-up still works on a plane.</text>
+</svg>

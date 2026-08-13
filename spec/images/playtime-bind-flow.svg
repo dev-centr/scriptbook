@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="340" viewBox="0 0 920 340" role="img" aria-labelledby="title desc">
+  <title id="title">Play time: detect, filter, maybe ask, bind, run</title>
+  <desc id="desc">An abstract playbook is bound to this computer: host snapshot, filter methods, optional choose, then execute argv.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 12px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .box { fill: #fff; stroke: #2c2c2c; stroke-width: 2; }
+      .ask { fill: #f7f3e8; stroke: #6b5a3e; stroke-width: 2; }
+      .go { fill: #1f3a2e; }
+      .t-inv { font-family: Georgia, "Times New Roman", serif; fill: #f7f3e8; }
+      .s-inv { font-family: "Segoe UI", system-ui, sans-serif; fill: #e8f0ea; font-size: 12px; }
+      .arrow { stroke: #2c2c2c; stroke-width: 1.75; fill: none; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2c2c2c"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="920" height="340"/>
+  <text class="label" x="32" y="36">PLAY TIME -- BIND, THEN RUN</text>
+  <text class="t" x="32" y="68" font-size="22">Same book. This computer fills in the verbs.</text>
+
+  <rect class="box" x="24" y="100" width="150" height="120" rx="4"/>
+  <text class="t" x="36" y="132" font-size="15">1. Snapshot</text>
+  <text class="s" x="36" y="158">Host Awareness</text>
+  <text class="s" x="36" y="176">family, PATH,</text>
+  <text class="s" x="36" y="194">formats</text>
+
+  <path class="arrow" d="M178,160 H206"/>
+
+  <rect class="box" x="210" y="100" width="150" height="120" rx="4"/>
+  <text class="t" x="222" y="132" font-size="15">2. Filter</text>
+  <text class="s" x="222" y="158">catalog rows</text>
+  <text class="s" x="222" y="176">that this host</text>
+  <text class="s" x="222" y="194">can actually run</text>
+
+  <path class="arrow" d="M364,160 H392"/>
+
+  <rect class="ask" x="396" y="100" width="150" height="120" rx="4"/>
+  <text class="t" x="408" y="132" font-size="15">3. Ask?</text>
+  <text class="s" x="408" y="158">one method: skip</text>
+  <text class="s" x="408" y="176">several: choose</text>
+  <text class="s" x="408" y="194">never "MSI or bash"</text>
+
+  <path class="arrow" d="M550,160 H578"/>
+
+  <rect class="box" x="582" y="100" width="150" height="120" rx="4"/>
+  <text class="t" x="594" y="132" font-size="15">4. Bind</text>
+  <text class="s" x="594" y="158">intent -&gt; argv</text>
+  <text class="s" x="594" y="176">or expand to</text>
+  <text class="s" x="594" y="194">more intents</text>
+
+  <path class="arrow" d="M736,160 H764"/>
+
+  <rect class="go" x="768" y="100" width="128" height="120" rx="4"/>
+  <text class="t-inv" x="780" y="132" font-size="15">5. Run</text>
+  <text class="s-inv" x="780" y="158">spawn argv</text>
+  <text class="s-inv" x="780" y="176">write sidecar</text>
+  <text class="s-inv" x="780" y="194">never edit .cmk</text>
+
+  <text class="s" x="32" y="280">The .cmk still says cli.install gh. The sidecar remembers winget install GitHub.cli.</text>
+  <text class="s" x="32" y="300">Questionnaire is Scriptbook. Ranking is Equivalence Engine. Execution is PlayTime.</text>
+</svg>

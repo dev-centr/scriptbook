@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">Facets compose at bind time; they are not graph axes</title>
+  <desc id="desc">A catalog table with independent columns versus an exploding lattice of format times shell path segments.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 12px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .ok { fill: #fff; stroke: #1f3a2e; stroke-width: 2; }
+      .bad { fill: #f8e6dc; stroke: #8a3b22; stroke-width: 2; }
+      .head { fill: #1f3a2e; }
+      .t-inv { font-family: "Segoe UI", system-ui, sans-serif; fill: #f7f3e8; font-size: 12px; }
+      .cell { fill: #e8f0ea; stroke: #1f3a2e; stroke-width: 1; }
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="430"/>
+  <text class="label" x="32" y="36">COLUMNS, NOT A CUBE</text>
+  <text class="t" x="32" y="68" font-size="22">Format x shell must not become a graph.</text>
+
+  <rect class="ok" x="24" y="96" width="430" height="280" rx="4"/>
+  <text class="t" x="44" y="128" font-size="16">Wanted: one row, independent facets</text>
+  <rect class="head" x="44" y="148" width="390" height="28"/>
+  <text class="t-inv" x="56" y="167">os          format       runtime</text>
+  <rect class="cell" x="44" y="176" width="390" height="32"/>
+  <text class="s" x="56" y="196">windows     winget       argv</text>
+  <rect class="cell" x="44" y="208" width="390" height="32"/>
+  <text class="s" x="56" y="228">linux       deb          argv</text>
+  <rect class="cell" x="44" y="240" width="390" height="32"/>
+  <text class="s" x="56" y="260">linux       flatpak      argv</text>
+  <rect class="cell" x="44" y="272" width="390" height="32"/>
+  <text class="s" x="56" y="292">any         script       bash</text>
+  <text class="s" x="44" y="340">Filter columns. Do not multiply them into nodes.</text>
+
+  <rect class="bad" x="470" y="96" width="426" height="280" rx="4"/>
+  <text class="t" x="490" y="128" font-size="16">Forbidden: path-segment lattice</text>
+  <text class="s" x="490" y="160">windows/winget/pwsh/msi</text>
+  <text class="s" x="490" y="180">windows/winget/nu/msi</text>
+  <text class="s" x="490" y="200">windows/winget/bash/msi</text>
+  <text class="s" x="490" y="220">linux/apt/bash/deb</text>
+  <text class="s" x="490" y="240">linux/apt/pwsh/deb</text>
+  <text class="s" x="490" y="260">... forever ...</text>
+  <text class="s" x="490" y="300">That would break Equivalence Engine.</text>
+  <text class="s" x="490" y="320">CLI is a catalog lookup, not a DAG.</text>
+  <text class="s" x="490" y="348">Never put shell in --to.</text>
+</svg>

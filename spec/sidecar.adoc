@@ -1,7 +1,12 @@
 = Scriptbook sidecar schema
 :navtitle: Sidecar schema
+:description: Run records next to the .cmk. The source file is never rewritten.
 
-Run output is **never** written back into the `.cmk` source. Scriptbook writes a sidecar directory next to the document.
+Write this so someone with no background can follow.
+
+== What do I need?
+
+A playbook that has been run once. Output lives beside the document, not inside it.
 
 == Path convention
 
@@ -15,32 +20,51 @@ foo.cmk.runs/
 
 Gitignore `*.cmk.runs/` in consuming repos.
 
+PlayTime writes these files. Authors edit only the `.cmk`.
+
 == `index.json`
 
 [source,json]
 ----
 {
   "runId": "uuid",
-  "playbookId": "gh-pages-https",
+  "playbookId": "install-gh",
   "sourcePath": "/abs/path/foo.cmk",
   "startedAt": "2026-07-31T12:00:00Z",
   "finishedAt": "2026-07-31T12:00:05Z",
   "exitSummary": 0,
-  "stepOrder": ["dns-check", "pages-status"],
-  "results": [ /* StepResult objects */ ]
+  "stepOrder": ["install", "verify"],
+  "host": {
+    "family": "windows",
+    "distro": "windows",
+    "arch": "x86_64",
+    "overlays": [],
+    "context": "windows/winget"
+  },
+  "answers": { "pkg-format": "winget" },
+  "results": [ ]
 }
 ----
+
+`host` is a snapshot. Nested intent expansion must reuse this snapshot. It must not probe again.
 
 == Per-step `<id>.json`
 
 [source,json]
 ----
 {
-  "id": "dns-check",
+  "id": "install",
   "exitCode": 0,
   "stdout": "...",
   "stderr": "...",
-  "shell": "nu",
+  "shell": "",
+  "runtime": "argv",
+  "intent": "cli.install",
+  "tool": "gh",
+  "context": "windows/winget",
+  "format": "winget",
+  "resolvedCommand": "winget install --id GitHub.cli -e",
+  "argv": ["winget", "install", "--id", "GitHub.cli", "-e"],
   "startedAt": "...",
   "finishedAt": "...",
   "durationMs": 12,
@@ -51,6 +75,10 @@ Gitignore `*.cmk.runs/` in consuming repos.
 
 `status` values: `ok`, `failed`, `skipped`, `blocked`.
 
+`shell` is for glue cells. Intent cells that run argv leave `shell` empty and set `runtime` to `argv`.
+
+The sidecar stores the **bound** realization (what actually ran). It is not a 3D address of format × shell × OS.
+
 == UI weave
 
-CLI `scriptbook status` and future DevCentr GUI load `.cmk` + sidecar and weave them for display. Authors edit only the `.cmk`.
+CLI `scriptbook status` and a future DevCentr GUI load `.cmk` + sidecar and weave them for display.

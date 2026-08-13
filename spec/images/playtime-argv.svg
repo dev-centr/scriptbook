@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="340" viewBox="0 0 920 340" role="img" aria-labelledby="title desc">
+  <title id="title">Install methods are argv, not shell costumes</title>
+  <desc id="desc">winget install is a box of arguments. It does not need a bash coat, a pwsh coat, or a nu coat.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .box { fill: #1f3a2e; }
+      .t-inv { font-family: Georgia, "Times New Roman", serif; fill: #f7f3e8; }
+      .s-inv { font-family: "Segoe UI", system-ui, sans-serif; fill: #e8f0ea; font-size: 13px; }
+      .coat { fill: #fff; stroke: #2c2c2c; stroke-width: 2; stroke-dasharray: 6 4; }
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="340"/>
+  <text class="label" x="32" y="36">ONE SUITCASE, NO COSTUMES</text>
+  <text class="t" x="32" y="68" font-size="22">winget install is not a bash program.</text>
+
+  <rect class="box" x="60" y="110" width="280" height="150" rx="4"/>
+  <text class="t-inv" x="80" y="150" font-size="18">argv</text>
+  <text class="s-inv" x="80" y="180">["winget", "install",</text>
+  <text class="s-inv" x="80" y="200"> "--id", "GitHub.cli"]</text>
+  <text class="s-inv" x="80" y="230">Spawn with no shell.</text>
+
+  <rect class="coat" x="400" y="110" width="150" height="150" rx="4"/>
+  <text class="t" x="420" y="160" font-size="16">bash coat</text>
+  <text class="s" x="420" y="190">not needed</text>
+
+  <rect class="coat" x="570" y="110" width="150" height="150" rx="4"/>
+  <text class="t" x="590" y="160" font-size="16">pwsh coat</text>
+  <text class="s" x="590" y="190">not needed</text>
+
+  <rect class="coat" x="740" y="110" width="150" height="150" rx="4"/>
+  <text class="t" x="760" y="160" font-size="16">nu coat</text>
+  <text class="s" x="760" y="190">not needed</text>
+
+  <text class="s" x="32" y="300">Shell is a PlayTime concern for glue cells. Runtime bash is a rare row constraint for curl | bash. Not a dimension.</text>
+</svg>

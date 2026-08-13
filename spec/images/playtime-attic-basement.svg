@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">Humans live in the attic; the catalog lives in the basement</title>
+  <desc id="desc">A house cross-section: abstract playbooks upstairs, ground argv methods in the basement. When the world changes, rewrite only the basement.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .roof { fill: #1f3a2e; }
+      .attic { fill: #e8f0ea; stroke: #1f3a2e; stroke-width: 2; }
+      .floor { fill: #fff; stroke: #2c2c2c; stroke-width: 2; }
+      .cellar { fill: #f7f3e8; stroke: #6b5a3e; stroke-width: 2; }
+      .t-inv { font-family: Georgia, "Times New Roman", serif; fill: #f7f3e8; }
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="420"/>
+  <text class="label" x="32" y="36">HUMAN / MACHINE SPLIT</text>
+  <text class="t" x="32" y="68" font-size="22">Vocabulary grows up. Realizations stay down.</text>
+
+  <polygon class="roof" points="200,92 460,92 330,36"/>
+  <text class="t-inv" x="292" y="78" font-size="14">intents</text>
+
+  <rect class="attic" x="200" y="92" width="260" height="90"/>
+  <text class="t" x="216" y="128" font-size="16">Attic -- you live here</text>
+  <text class="s" x="216" y="152">install gh</text>
+  <text class="s" x="216" y="170">open port 443</text>
+
+  <rect class="floor" x="200" y="182" width="260" height="80"/>
+  <text class="t" x="216" y="214" font-size="16">Stairs -- PlayTime</text>
+  <text class="s" x="216" y="238">dereference + expand</text>
+
+  <rect class="cellar" x="200" y="262" width="260" height="100"/>
+  <text class="t" x="216" y="294" font-size="16">Basement -- the catalog</text>
+  <text class="s" x="216" y="318">winget / apt / nix argv</text>
+  <text class="s" x="216" y="336">rewrite THIS when the world moves</text>
+
+  <text class="t" x="500" y="140" font-size="16">You do not keep a Windows script</text>
+  <text class="t" x="500" y="168" font-size="16">and a Linux script.</text>
+  <text class="s" x="500" y="210">When winget flags change, you edit one</text>
+  <text class="s" x="500" y="230">catalog row. Every playbook above it</text>
+  <text class="s" x="500" y="250">dereferences better. The book is still</text>
+  <text class="s" x="500" y="270">"install gh".</text>
+  <text class="s" x="500" y="310">That is why people write more abstract</text>
+  <text class="s" x="500" y="330">scripts instead of more shell.</text>
+</svg>

@@ -1,0 +1,121 @@
+= Host Awareness
+:navtitle: Host Awareness
+:description: How PlayTime learns the OS without asking the Equivalence Engine.
+
+Write this so someone with no background can follow.
+
+== What do I need?
+
+A computer that will run PlayTime. No network is required for this step.
+
+== The problem in one sentence
+
+PlayTime must know “what computer is this?” **before** it asks the Equivalence Engine for commands. If it asked the engine in order to learn the OS, that would be a loop that never starts.
+
+So: learn the host first (this page). Then bind intents (the engine).
+
+.Snapshot, then dereference
+image::images/playtime-bootstrap.svg[alt="Deadlock cycle crossed out; snapshot then Equivalence Engine bind"]
+
+== Host Identity Record
+
+Every probe must fill this record. Call the framework **Host Awareness**. Call this struct the **Host Identity Record**.
+
+[cols="1,2", options="header"]
+|===
+| Field | Meaning
+
+| `family`
+| Kernel class: `windows`, `linux`, `darwin`, `freebsd`, …
+
+| `distro`
+| Product name: `ubuntu`, `fedora`, `windows`, `macos`, …
+
+| `like`
+| Cousins (Linux `ID_LIKE`): `debian`, `rhel`, …
+
+| `version`
+| OS version string
+
+| `arch`
+| `x86_64`, `aarch64`, …
+
+| `overlays`
+| Extra hats, not a new family: `wsl`, `cygwin`, `msys`, `container`
+
+| `caps.shells`
+| Shells on PATH: `nu`, `pwsh`, `bash`, …
+
+| `caps.pms`
+| Package managers on PATH: `winget`, `apt`, `nix`, …
+
+| `caps.formats`
+| Formats this host can run: `msi`, `deb`, `flatpak`, `winget`, …
+|===
+
+Filesystem rules already use `family` and `inherits` (see `equivalence-rules-filesystem` `context.sdl`). Host Awareness must stay aligned with that.
+
+`macos` in the CLI catalog and `darwin` as a kernel class are the same family for matching.
+
+== Probe kinds (baked into PlayTime)
+
+A **probe kind** is a tiny built-in action. A table cannot invent a new kernel API. These kinds ship inside PlayTime:
+
+[cols="1,2", options="header"]
+|===
+| Kind | What it does
+
+| `compileTime`
+| Use the D compiler’s `version(Windows)` / `version(OSX)` / else.
+
+| `uname`
+| POSIX `uname` (family, arch).
+
+| `osReleaseFile`
+| Read `/etc/os-release` (`ID`, `ID_LIKE`, `VERSION_ID`).
+
+| `ntVersion`
+| Windows `RtlGetVersion` (or the current-version registry).
+
+| `pathHas`
+| Is this program on PATH? (Do **not** shell out to `where` vs `which`. Those assume an OS.)
+
+| `command`
+| Escape hatch: run a command. Use only for an OS we barely know.
+|===
+
+Prefer file and API probes. Do not build Windows/Linux/macOS detection out of shell one-liners.
+
+== Probe table (data, then baked)
+
+The ordered list of probes lives as shared data (SDL/JSON next to host rules). **CI runs the Equivalence Engine as a compiler** and writes a cascade into PlayTime (for example `lib/embed/probes.generated.json`). Pin the rules git revision.
+
+The first cascade may be hand-written (compiler stage 0). After that, the engine generates it. Humans review the diff.
+
+PlayTime at **run time** must not call the Equivalence Engine to learn `family`. It only walks the baked cascade.
+
+== What we will not do
+
+* Wait for every OS vendor to give us a `get_os()` call.
+* Register `os.family` as an intent used to start a run.
+* Treat every Linux distro as a PlayTime code change (`os-release` and `ID_LIKE` already exist).
+* Ship a PlayTime that cannot detect Windows, Linux, or macOS without downloading rules.
+
+A new Unix-like distro that speaks `os-release` is data only (next bake). A kernel that is neither NT nor POSIX needs a new probe **kind** in PlayTime, then a table row.
+
+== Growth loop
+
+Catalogs get richer → CI bakes a better cascade → PlayTime wakes up on more machines → people write more playbooks → they register more intents and probes → the next bake is richer. Each release is a ratchet.
+
+.Ratchet at build time
+image::images/playtime-growth-ratchet.svg[alt="Rules to CI bake to shipped PlayTime to more playbooks back to new catalog rows"]
+
+Humans stay at the intent layer. When the world changes, they redefine the bottom catalog, not the playbook.
+
+.Attic intents, basement argv
+image::images/playtime-attic-basement.svg[alt="House: intents in the attic, PlayTime stairs, catalog in the basement"]
+
+Overlays (`wsl`, `cygwin`, `container`) are stickers on a family, not new planets.
+
+.Overlays are stickers
+image::images/playtime-overlays.svg[alt="Family circles with wsl, cygwin, container stickers"]
