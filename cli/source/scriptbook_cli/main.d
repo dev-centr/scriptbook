@@ -10,14 +10,14 @@ import scriptbook.prohelp;
 import scriptbook.run;
 import scriptbook.sidecar;
 
-enum string CLI_VERSION = "0.1.2";
+enum string CLI_VERSION = "0.2.0";
 
 private void usage()
 {
 	writeln("scriptbook " ~ CLI_VERSION);
 	writeln("");
 	writeln("Usage:");
-	writeln("  scriptbook run <file.cmk> [--yes] [--dry-run]");
+	writeln("  scriptbook run <file.cmk> [--yes] [--dry-run] [--format <id>] [--catalog <tools.sdl>] [--answers <file.json>] [--prefer-mutable]");
 	writeln("  scriptbook status <file.cmk>");
 	writeln("  scriptbook history <file.cmk>");
 	writeln("  scriptbook clean-runs <file.cmk>");
@@ -28,7 +28,20 @@ private void usage()
 	writeln("New to audit trails? Run: scriptbook prohelp");
 }
 
-private int cmdRun(string path, bool yes, bool dryRun)
+private string[string] loadAnswersFile(string path)
+{
+	import std.json : parseJSON;
+
+	string[string] a;
+	if (path.length == 0 || !exists(path))
+		return a;
+	auto j = parseJSON(readText(path));
+	foreach (k, v; j.object)
+		a[k] = v.str;
+	return a;
+}
+
+private int cmdRun(string path, bool yes, bool dryRun, string format, string catalog, string answersPath, bool preferImmutable)
 {
 	if (!exists(path))
 	{
@@ -46,6 +59,10 @@ private int cmdRun(string path, bool yes, bool dryRun)
 	RunOptions opts;
 	opts.yes = yes;
 	opts.dryRun = dryRun;
+	opts.format = format;
+	opts.catalogPath = catalog;
+	opts.preferImmutable = preferImmutable;
+	opts.answers = loadAnswersFile(answersPath);
 	auto idx = runPlaybook(pb, opts);
 	writeSidecar(abs, idx);
 	foreach (r; idx.results)
@@ -171,13 +188,32 @@ int main(string[] args)
 			}
 			bool yes = false;
 			bool dryRun = false;
+			bool preferImmutable = true;
 			string file;
-			foreach (a; args[2 .. $])
+			string format;
+			string catalog;
+			string answersPath;
+			for (size_t i = 2; i < args.length; i++)
 			{
+				auto a = args[i];
 				if (a == "--yes" || a == "-y")
 					yes = true;
 				else if (a == "--dry-run")
 					dryRun = true;
+				else if (a == "--prefer-mutable")
+					preferImmutable = false;
+				else if (a == "--format" && i + 1 < args.length)
+					format = args[++i];
+				else if (a.startsWith("--format="))
+					format = a["--format=".length .. $];
+				else if (a == "--catalog" && i + 1 < args.length)
+					catalog = args[++i];
+				else if (a.startsWith("--catalog="))
+					catalog = a["--catalog=".length .. $];
+				else if (a == "--answers" && i + 1 < args.length)
+					answersPath = args[++i];
+				else if (a.startsWith("--answers="))
+					answersPath = a["--answers=".length .. $];
 				else if (!a.startsWith("-"))
 					file = a;
 			}
@@ -186,7 +222,7 @@ int main(string[] args)
 				usage();
 				return 1;
 			}
-			return cmdRun(file, yes, dryRun);
+			return cmdRun(file, yes, dryRun, format, catalog, answersPath, preferImmutable);
 		}
 	case "status":
 		if (args.length < 3)

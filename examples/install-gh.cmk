@@ -1,0 +1,35 @@
+---
+title "Install GitHub CLI (intent playbook)"
+---
+
+= Install gh
+
+Same file on every OS. PlayTime asks the Equivalence Engine for a
+`cli.install` command that this computer can run. No bash-to-pwsh rewrite.
+
+Need a catalog: `--catalog examples/fixture-catalog.sdl` or
+`SCRIPTBOOK_CATALOG` pointing at `equivalence-rules-cli/catalog/tools.sdl`.
+
+If several formats fit, pass `--format nix` (or `winget`, `deb`, …).
+
+::: playbook [id="install-gh" shell="auto"]
+
+::: choose [id="pkg-format" prompt="How should we install gh?" intent="cli.install" tool="gh"]
+:::
+
+::: step [id="install" intent="cli.install" tool="gh" bind="pkg-format" confirm=true]
+:::
+
+::: step [id="desktop-file" when-answer="pkg-format=appimage"]
+```
+echo "AppImage satellite step — skipped unless the chosen format is appimage"
+```
+:::
+
+::: step [id="verify" when="install"]
+```
+gh --version
+```
+:::
+
+:::

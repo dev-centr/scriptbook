@@ -27,17 +27,25 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: scriptbook
+
+      - uses: actions/checkout@v4
+        with:
+          repository: dev-centr/libequivalence
+          path: libequivalence
 
       - uses: dlang-community/setup-dlang@v1
         with:
           compiler: ldc-latest
 
       - name: Build CLI
-        working-directory: cli
+        working-directory: scriptbook/cli
         run: dub build --compiler=ldc2 -b release
 
       - name: Stage binary (Unix)
         if: runner.os != 'Windows'
+        working-directory: scriptbook
         run: |
           mkdir -p dist
           cp cli/bin/scriptbook "dist/${{ matrix.artifact }}"
@@ -46,6 +54,7 @@ jobs:
 
       - name: Stage binary (Windows)
         if: runner.os == 'Windows'
+        working-directory: scriptbook
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force dist | Out-Null
@@ -56,8 +65,8 @@ jobs:
         with:
           name: ${{ matrix.artifact }}
           path: |
-            dist/*.tar.gz
-            dist/*.zip
+            scriptbook/dist/*.tar.gz
+            scriptbook/dist/*.zip
 
   publish:
     needs: build

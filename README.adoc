@@ -40,8 +40,10 @@ link:https://github.com/dev-centr/scriptbook/issues[Request Feature]
 endif::[]
 **Scriptbook** runs CentrMark (`.cmk`) playbooks on your machine and records output in **sidecars** — never by rewriting the document. Think Jupyter for scripts: narrative + `::: step` cells, playable from a CLI (DevCentr GUI later).
 * Markup: CentrMark `::: playbook` / `::: step` (see `spec/playbook-profile.adoc`)
-* Executor: this repo (library + `scriptbook` CLI)
+* Engine: **PlayTime** (the `lib/` package) — binds intents, detects the host, runs commands
+* App: **Scriptbook** CLI (`scriptbook`) — later also a DevCentr GUI
 * Output: `<file.cmk>.runs/` (`spec/sidecar.adoc`)
+* Do **not** translate bash into PowerShell. Name an intent (`cli.install`) and let PlayTime ask the Equivalence Engine.
 SLP / `::: tangle` is for **source** literate programming. Scriptbook is for **run on my machine** docs.
 
 == About The Project
@@ -72,6 +74,7 @@ link:#readme-top[back to top]
 [source,shell]
 ----
 scriptbook run examples/smoke.cmk
+scriptbook run examples/install-gh.cmk --dry-run --yes --catalog examples/fixture-catalog.sdl
 scriptbook status examples/smoke.cmk
 scriptbook history examples/smoke.cmk
 scriptbook prohelp
@@ -82,6 +85,10 @@ Flags:
 
 * `--yes` / `-y` — allow steps with `confirm=true`
 * `--dry-run` — record scripts without executing
+* `--format <id>` — pick an install format when several fit (`winget`, `deb`, `nix`, …)
+* `--catalog <tools.sdl>` — Equivalence Engine CLI catalog (or `SCRIPTBOOK_CATALOG`)
+* `--answers <file.json>` — answers for `::: choose` / `::: ask` (CI)
+* `--prefer-mutable` — prefer winget/brew/apt over Nix when both exist
 
 Commands:
 
@@ -95,7 +102,9 @@ Nushell helpers: `nu/scriptbook.nu`.
 === Examples
 
 * `examples/smoke.cmk` — CI smoke
+* `examples/install-gh.cmk` — abstract `cli.install` playbook (same file on Windows and Linux)
 * `examples/gh-pages-https.cmk` — Cloudflare ↔ GitHub Pages HTTPS algorithm (see also `dev-centr/general-knowledge` how-to + `scripts/check-gh-pages-https.nu`)
+* Specs: `spec/playtime.adoc`, `spec/host-awareness.adoc`, `spec/playbook-profile.adoc`
 
 link:#readme-top[back to top]
 

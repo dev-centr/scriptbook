@@ -127,10 +127,67 @@ private Step stepFromBody(string propsRaw, string body, int sourceLine, string d
 	step.env = propGet(props, "env", "");
 	step.confirm = propBool(props, "confirm", false);
 	step.when = propGet(props, "when", "");
+	step.whenAnswer = propGet(props, "when-answer", "");
+	step.whenContext = propGet(props, "when-context", "");
+	step.intent = propGet(props, "intent", "");
+	step.tool = propGet(props, "tool", "");
+	step.bind = propGet(props, "bind", "");
+	step.prompt = propGet(props, "prompt", "");
 	step.sourceLine = sourceLine;
 	extractCodeFence(body, step.language, step.script);
 	if (step.id.length == 0)
 		step.id = "step-" ~ to!string(sourceLine);
+	return step;
+}
+
+private Option[] parseOptions(string body)
+{
+	Option[] opts;
+	foreach (line; body.splitLines)
+	{
+		OpenFence open;
+		if (!parseDirectiveOpen(line, open))
+			continue;
+		if (open.name != "option")
+			continue;
+		auto props = parseProps(open.propsRaw);
+		Option o;
+		o.id = propGet(props, "id", "");
+		o.whenContext = propGet(props, "when-context", "");
+		o.formats = propGet(props, "formats", "");
+		if (o.id.length)
+			opts ~= o;
+	}
+	return opts;
+}
+
+private Step chooseFromBody(string propsRaw, string body, int sourceLine)
+{
+	auto props = parseProps(propsRaw);
+	Step step;
+	step.kind = "choose";
+	step.id = propGet(props, "id", "");
+	step.prompt = propGet(props, "prompt", "");
+	step.intent = propGet(props, "intent", "");
+	step.tool = propGet(props, "tool", "");
+	step.whenContext = propGet(props, "when-context", "");
+	step.sourceLine = sourceLine;
+	step.options = parseOptions(body);
+	if (step.id.length == 0)
+		step.id = "choose-" ~ to!string(sourceLine);
+	return step;
+}
+
+private Step askFromBody(string propsRaw, int sourceLine)
+{
+	auto props = parseProps(propsRaw);
+	Step step;
+	step.kind = "ask";
+	step.id = propGet(props, "id", "");
+	step.prompt = propGet(props, "prompt", "");
+	step.sourceLine = sourceLine;
+	if (step.id.length == 0)
+		step.id = "ask-" ~ to!string(sourceLine);
 	return step;
 }
 
@@ -203,6 +260,14 @@ Playbook parsePlaybook(string source, string sourcePath = "")
 						auto defaultShell = pb.shell.length ? pb.shell : "auto";
 						pb.steps ~= stepFromBody(top.propsRaw, body, top.line, defaultShell);
 					}
+					else if (top.name == "choose")
+					{
+						pb.steps ~= chooseFromBody(top.propsRaw, body, top.line);
+					}
+					else if (top.name == "ask")
+					{
+						pb.steps ~= askFromBody(top.propsRaw, top.line);
+					}
 					else if (top.name == "playbook")
 					{
 						auto props = parseProps(top.propsRaw);
@@ -215,7 +280,8 @@ Playbook parsePlaybook(string source, string sourcePath = "")
 				}
 			}
 
-			if (open.name == "playbook" || open.name == "step")
+			if (open.name == "playbook" || open.name == "step"
+					|| open.name == "choose" || open.name == "ask")
 			{
 				if (open.name == "playbook")
 				{
@@ -239,6 +305,14 @@ Playbook parsePlaybook(string source, string sourcePath = "")
 				auto defaultShell = pb.shell.length ? pb.shell : "auto";
 				pb.steps ~= stepFromBody(top.propsRaw, body, top.line, defaultShell);
 			}
+			else if (top.name == "choose")
+			{
+				pb.steps ~= chooseFromBody(top.propsRaw, body, top.line);
+			}
+			else if (top.name == "ask")
+			{
+				pb.steps ~= askFromBody(top.propsRaw, top.line);
+			}
 			else if (top.name == "playbook")
 			{
 				auto props = parseProps(top.propsRaw);
@@ -258,4 +332,29 @@ Playbook parsePlaybook(string source, string sourcePath = "")
 		pb.id = sourcePath.baseName.stripExtension;
 	}
 	return pb;
+}
+
+unittest
+{
+	auto src = q"CMK
+::: playbook [id="install-gh" shell="auto"]
+::: choose [id="pkg-format" prompt="How?" intent="cli.install" tool="gh"]
+:::
+::: step [id="install" intent="cli.install" tool="gh" bind="pkg-format"]
+:::
+::: step [id="verify" when="install" when-answer="pkg-format=winget"]
+```
+gh --version
+```
+:::
+:::
+CMK";
+	auto pb = parsePlaybook(src, "t.cmk");
+	assert(pb.id == "install-gh");
+	assert(pb.steps.length == 3);
+	assert(pb.steps[0].kind == "choose");
+	assert(pb.steps[0].tool == "gh");
+	assert(pb.steps[1].intent == "cli.install");
+	assert(pb.steps[1].bind == "pkg-format");
+	assert(pb.steps[2].whenAnswer == "pkg-format=winget");
 }

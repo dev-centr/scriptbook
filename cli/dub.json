@@ -1,6 +1,6 @@
 {
   "name": "scriptbook-cli",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "authors": ["Dev-Centr contributors"],
   "description": "Scriptbook CLI — run / status / history / prohelp / clean-runs for .cmk playbooks",
   "license": "LicenseRef-CSL-1.0-B",

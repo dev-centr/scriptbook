@@ -1,5 +1,16 @@
 = Changelog
 
+== 0.2.0 — 2026-08-13
+
+* Name the three layers: CentrMark (format), PlayTime (engine in `lib/`), Scriptbook (CLI app)
+* Intent steps: `::: step [intent="cli.install" tool="gh"]` bound via libequivalence
+* Host Awareness: baked probe cascade (`lib/embed/probes.generated.json`); no EE call to learn OS
+* `::: choose` / `::: ask` / `when-answer` / `when-context`
+* CLI: `--format`, `--catalog`, `--answers`, `--prefer-mutable`
+* Sidecar records host snapshot, answers, and resolved command
+* Example: `examples/install-gh.cmk` (same file on every OS)
+* Specs: `spec/playtime.adoc`, `spec/host-awareness.adoc`, updated playbook profile + sidecar
+
 == 0.1.2 — 2026-08-03
 
 * Relicensed to *CSL-1.0-B* (Centr Source License — Branding); was AGPL-3.0-or-later

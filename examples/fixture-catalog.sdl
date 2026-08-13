@@ -1,0 +1,58 @@
+cliToolsCatalog {
+    version 1
+    contexts {
+        context {
+            id "windows/winget"
+            family "windows"
+            packageManager "winget"
+            format "winget"
+            mutable true
+        }
+        context {
+            id "linux/debian/default"
+            family "linux"
+            packageManager "apt"
+            format "deb"
+            mutable true
+        }
+        context {
+            id "linux/nix/default"
+            family "linux"
+            packageManager "nix"
+            format "nix"
+            mutable false
+        }
+        context {
+            id "macos/homebrew"
+            family "macos"
+            packageManager "homebrew"
+            format "brew"
+            mutable true
+        }
+    }
+    tools {
+        tool {
+            id "gh"
+            verifyCommand "gh --version"
+            install {
+                method {
+                    context "windows/winget"
+                    command "winget" "install" "--id" "GitHub.cli" "-e"
+                }
+                method {
+                    context "linux/debian/default"
+                    command "sudo" "apt-get" "install" "-y" "gh"
+                }
+                method {
+                    context "linux/nix/default"
+                    command "nix" "profile" "install" "nixpkgs#gh"
+                    mutable false
+                }
+                method {
+                    context "macos/homebrew"
+                    command "brew" "install" "gh"
+                }
+            }
+        }
+    }
+}

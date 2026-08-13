@@ -4,10 +4,13 @@
 !/.gitignore
 !/.github/
 !/lib/
+!/lib/embed/
+!/lib/embed/**
 !/cli/
 !/nu/
 !/examples/
 !/spec/
+!/docs/
 !/*.adoc
 !/LICENSE*
 !/README*
@@ -20,10 +23,12 @@
 !/nu/**
 !/examples/**
 !/spec/**
+!/docs/**
 
 # Build / sidecars
 **/bin/
 **/.dub/
+**/dub.selections.json
 **/*.exe
 **/*.obj
 **/*.o

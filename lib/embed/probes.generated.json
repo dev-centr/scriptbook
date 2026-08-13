@@ -1,0 +1,20 @@
+{
+  "rulesRevision": "stage0-handwritten",
+  "note": "CI will later run equivalence-engine to regenerate this cascade. PlayTime must not call EE to learn family.",
+  "probes": [
+    { "kind": "compileTime" },
+    { "kind": "uname" },
+    { "kind": "osReleaseFile", "path": "/etc/os-release" },
+    { "kind": "ntVersion" },
+    {
+      "kind": "pathHas",
+      "names": [
+        "nu", "pwsh", "bash", "sh",
+        "winget", "scoop", "choco", "brew",
+        "apt-get", "dnf", "pacman", "apk",
+        "nix", "guix", "flatpak", "snap",
+        "npm", "pnpm", "msiexec"
+      ]
+    }
+  ]
+}

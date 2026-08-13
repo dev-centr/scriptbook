@@ -17,6 +17,12 @@ struct StepResult
 	string stdoutText;
 	string stderrText;
 	string shell;
+	string runtime;
+	string intent;
+	string tool;
+	string context;
+	string format;
+	string resolvedCommand;
 	string startedAt;
 	string finishedAt;
 	long durationMs;
@@ -34,6 +40,12 @@ struct RunIndex
 	string[] stepOrder;
 	int exitSummary; // max/nonzero prefer
 	StepResult[] results;
+	string hostFamily;
+	string hostDistro;
+	string hostArch;
+	string hostContext;
+	string[] hostOverlays;
+	string[string] answers;
 }
 
 string runsDirFor(string cmkPath)
@@ -61,12 +73,31 @@ string stepResultToJson(StepResult r)
 		~ `"stdout":"` ~ jsonEscape(r.stdoutText) ~ `",`
 		~ `"stderr":"` ~ jsonEscape(r.stderrText) ~ `",`
 		~ `"shell":"` ~ jsonEscape(r.shell) ~ `",`
+		~ `"runtime":"` ~ jsonEscape(r.runtime) ~ `",`
+		~ `"intent":"` ~ jsonEscape(r.intent) ~ `",`
+		~ `"tool":"` ~ jsonEscape(r.tool) ~ `",`
+		~ `"context":"` ~ jsonEscape(r.context) ~ `",`
+		~ `"format":"` ~ jsonEscape(r.format) ~ `",`
+		~ `"resolvedCommand":"` ~ jsonEscape(r.resolvedCommand) ~ `",`
 		~ `"startedAt":"` ~ jsonEscape(r.startedAt) ~ `",`
 		~ `"finishedAt":"` ~ jsonEscape(r.finishedAt) ~ `",`
 		~ `"durationMs":` ~ to!string(r.durationMs) ~ `,`
 		~ `"status":"` ~ jsonEscape(r.status) ~ `",`
 		~ `"message":"` ~ jsonEscape(r.message) ~ `"`
 		~ "}";
+}
+
+private string answersToJson(string[string] answers)
+{
+	string[] parts;
+	foreach (k, v; answers)
+		parts ~= `"` ~ jsonEscape(k) ~ `":"` ~ jsonEscape(v) ~ `"`;
+	return "{" ~ parts.join(",") ~ "}";
+}
+
+private string overlaysToJson(string[] overlays)
+{
+	return "[" ~ overlays.map!(s => `"` ~ jsonEscape(s) ~ `"`).array.join(",") ~ "]";
 }
 
 string runIndexToJson(RunIndex idx)
@@ -81,6 +112,14 @@ string runIndexToJson(RunIndex idx)
 		~ `"finishedAt":"` ~ jsonEscape(idx.finishedAt) ~ `",`
 		~ `"exitSummary":` ~ to!string(idx.exitSummary) ~ `,`
 		~ `"stepOrder":[` ~ steps ~ `],`
+		~ `"host":{`
+		~ `"family":"` ~ jsonEscape(idx.hostFamily) ~ `",`
+		~ `"distro":"` ~ jsonEscape(idx.hostDistro) ~ `",`
+		~ `"arch":"` ~ jsonEscape(idx.hostArch) ~ `",`
+		~ `"context":"` ~ jsonEscape(idx.hostContext) ~ `",`
+		~ `"overlays":` ~ overlaysToJson(idx.hostOverlays)
+		~ `},`
+		~ `"answers":` ~ answersToJson(idx.answers) ~ `,`
 		~ `"results":[` ~ results ~ `]`
 		~ "}";
 }
@@ -145,6 +184,18 @@ RunIndex readRunIndex(string cmkPath)
 			sr.stdoutText = r["stdout"].str;
 			sr.stderrText = r["stderr"].str;
 			sr.shell = r["shell"].str;
+			if ("runtime" in r)
+				sr.runtime = r["runtime"].str;
+			if ("intent" in r)
+				sr.intent = r["intent"].str;
+			if ("tool" in r)
+				sr.tool = r["tool"].str;
+			if ("context" in r)
+				sr.context = r["context"].str;
+			if ("format" in r)
+				sr.format = r["format"].str;
+			if ("resolvedCommand" in r)
+				sr.resolvedCommand = r["resolvedCommand"].str;
 			sr.startedAt = r["startedAt"].str;
 			sr.finishedAt = r["finishedAt"].str;
 			sr.durationMs = r["durationMs"].integer;
