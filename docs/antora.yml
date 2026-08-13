@@ -1,0 +1,6 @@
+name: scriptbook
+title: Scriptbook
+version: ~
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc

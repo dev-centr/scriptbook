@@ -1,0 +1,46 @@
+﻿= Scriptbook
+:navtitle: Scriptbook
+:description: Play CentrMark playbooks. PlayTime binds intents on this computer. The source file is never rewritten.
+
+Write this so someone with no background can follow.
+
+== What do I need?
+
+A `.cmk` file and the `scriptbook` CLI. Illustrated model: xref:general-knowledge:explanation/infrastructure/abstract-playbooks.adoc[Abstract playbooks].
+
+**Scriptbook** plays a CentrMark document on your machine. Run output lives in **sidecars**. The recipe is never rewritten.
+
+This is not Synchronous Literate Programming (that tangles *source*). This is not a bash-to-PowerShell translator.
+
+.Cookbook, kitchen, waiter
+image::playtime-layers.svg[alt="Three layers: CentrMark the book, PlayTime the stage, Scriptbook the app"]
+
+[cols="1,2", options="header"]
+|===
+| Layer | Job
+
+| **CentrMark** (`.cmk`)
+| Markup only. No exec.
+
+| **PlayTime**
+| Engine in this repo's library. Snapshot host, bind intents, run argv, write sidecars.
+
+| **Scriptbook**
+| App (`scriptbook` CLI; DevCentr GUI later). Opens the book.
+|===
+
+PlayTime is being built here. It rhymes with OpenShellOrg (argv honesty, host identity). It is not moving yet.
+
+== In this component
+
+* xref:playtime.adoc[PlayTime] -- who may call whom
+* xref:host-awareness.adoc[Host Awareness] -- bootstrap is not an intent
+* xref:playbook-profile.adoc[Playbook profile] -- directives
+* xref:sidecar.adoc[Sidecar schema] -- run records
+
+== Elsewhere
+
+* Essay: link:https://devcentr.org/news/2026-08-13-intents-not-shell-translation[Intents, not shell translation]
+* xref:dev-center:specifications:features/scriptbook-system-playbooks.adoc[DevCentr feature spec]
+* xref:equivalence-engine::host-awareness.adoc[Equivalence Engine: Host Awareness]
+* OpenShellOrg: link:https://docs.opensh.org/shell-architecture/playtime-at-the-shell-boundary.html[PlayTime at the shell boundary]

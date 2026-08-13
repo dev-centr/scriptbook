@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="400" viewBox="0 0 920 400" role="img" aria-labelledby="title desc">
+  <title id="title">Hot-replace is a shell compiler we do not have</title>
+  <desc id="desc">A bash install line enters a meat grinder labeled hot-replace and comes out as broken PowerShell with flying quotes.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .ok { fill: #e8f0ea; stroke: #1f3a2e; stroke-width: 2; }
+      .bad { fill: #f8e6dc; stroke: #8a3b22; stroke-width: 2; }
+      .grind { fill: #4a2c28; }
+      .t-inv { font-family: Georgia, "Times New Roman", serif; fill: #f7f3e8; }
+      .s-inv { font-family: "Segoe UI", system-ui, sans-serif; fill: #f7f3e8; font-size: 12px; }
+      .arrow { stroke: #2c2c2c; stroke-width: 1.75; fill: none; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2c2c2c"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="920" height="400"/>
+  <text class="label" x="32" y="36">THE WRONG MACHINE</text>
+  <text class="t" x="32" y="68" font-size="22">Do not put a bash script through a blender.</text>
+
+  <rect class="ok" x="32" y="110" width="240" height="160" rx="4"/>
+  <text class="t" x="48" y="148" font-size="16">Linux playbook</text>
+  <text class="s" x="48" y="178">apt install gh</text>
+  <text class="s" x="48" y="200">if [ -f /etc/os-release ]</text>
+  <text class="s" x="48" y="222">sudo systemctl ...</text>
+  <text class="s" x="48" y="250">Looks fine. On Linux.</text>
+
+  <path class="arrow" d="M284,190 H330"/>
+
+  <g transform="translate(340,100)">
+    <rect class="grind" width="220" height="180" rx="8"/>
+    <text class="t-inv" x="18" y="40" font-size="16">HOT-REPLACE</text>
+    <text class="s-inv" x="18" y="68">apt  -&gt;  winget</text>
+    <text class="s-inv" x="18" y="90">$HOME  -&gt;  %USERPROFILE%</text>
+    <text class="s-inv" x="18" y="112">&amp;&amp;  -&gt;  ;</text>
+    <text class="s-inv" x="18" y="148">This is a compiler.</text>
+    <text class="s-inv" x="18" y="168">We do not have one.</text>
+  </g>
+
+  <path class="arrow" d="M572,190 H618"/>
+
+  <rect class="bad" x="628" y="110" width="260" height="160" rx="4"/>
+  <text class="t" x="644" y="148" font-size="16">"Translated" Windows</text>
+  <text class="s" x="644" y="178">winget install gh</text>
+  <text class="s" x="644" y="200">if [ -f C:\etc\os-release ]</text>
+  <text class="s" x="644" y="222">quoting? elevation? PATH?</text>
+  <text class="s" x="644" y="250">Same words. Wrong planet.</text>
+
+  <text class="s" x="32" y="360">Author the dish (intent). Buy local ingredients (catalog). Do not translate the shopping list word by word.</text>
+</svg>

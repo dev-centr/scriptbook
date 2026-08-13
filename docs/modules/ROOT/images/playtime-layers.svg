@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">Three layers: CentrMark, PlayTime, Scriptbook</title>
+  <desc id="desc">A book of markup, a stage that plays it, and a reader app that opens the book.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .panel { fill: #fff; stroke: #2c2c2c; stroke-width: 2; }
+      .ink { fill: #1a1a1a; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .stage { fill: #1f3a2e; }
+      .spot { fill: #f7f3e8; opacity: 0.9; }
+      .book { fill: #e8f0ea; stroke: #1f3a2e; stroke-width: 2; }
+      .reader { fill: #f7f3e8; stroke: #6b5a3e; stroke-width: 2; }
+      .t-inv { font-family: Georgia, "Times New Roman", serif; fill: #f7f3e8; }
+      .s-inv { font-family: "Segoe UI", system-ui, sans-serif; fill: #e8f0ea; font-size: 13px; }
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="420"/>
+  <text class="label" x="32" y="36">COOKBOOK / KITCHEN / READER</text>
+  <text class="t" x="32" y="68" font-size="22">The book is not the kitchen. The kitchen is not the waiter.</text>
+
+  <g transform="translate(32,96)">
+    <rect class="book" width="260" height="250" rx="4"/>
+    <text class="t" x="20" y="40" font-size="18">CentrMark</text>
+    <text class="s" x="20" y="68">the .cmk file</text>
+    <rect x="20" y="92" width="220" height="28" fill="#fff" stroke="#1f3a2e"/>
+    <text class="s" x="32" y="111">::: playbook</text>
+    <rect x="20" y="128" width="220" height="28" fill="#fff" stroke="#1f3a2e"/>
+    <text class="s" x="32" y="147">::: step intent=...</text>
+    <rect x="20" y="164" width="220" height="28" fill="#fff" stroke="#1f3a2e"/>
+    <text class="s" x="32" y="183">::: choose</text>
+    <text class="s" x="20" y="226">Writes words. Never runs them.</text>
+  </g>
+
+  <g transform="translate(330,96)">
+    <rect class="stage" width="260" height="250" rx="4"/>
+    <polygon class="spot" points="130,24 70,118 190,118"/>
+    <rect x="88" y="150" width="84" height="14" fill="#f7f3e8"/>
+    <text class="t-inv" x="20" y="40" font-size="18">PlayTime</text>
+    <text class="s-inv" x="20" y="200">the engine / the kitchen</text>
+    <text class="s-inv" x="20" y="222">Binds. Runs. Writes sidecars.</text>
+  </g>
+
+  <g transform="translate(628,96)">
+    <rect class="reader" width="260" height="250" rx="4"/>
+    <text class="t" x="20" y="40" font-size="18">Scriptbook</text>
+    <text class="s" x="20" y="68">the app (CLI, later GUI)</text>
+    <rect x="48" y="100" width="164" height="88" fill="#fff" stroke="#6b5a3e"/>
+    <text class="s" x="64" y="128">scriptbook run</text>
+    <text class="s" x="64" y="150">book.cmk</text>
+    <text class="s" x="64" y="172">--format winget</text>
+    <text class="s" x="20" y="226">Opens the book. Asks you.</text>
+  </g>
+</svg>
