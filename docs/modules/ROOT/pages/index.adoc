@@ -1,4 +1,4 @@
-﻿= Scriptbook
+= Scriptbook
 :navtitle: Scriptbook
 :description: Play CentrMark playbooks. PlayTime binds intents on this computer. The source file is never rewritten.
 
@@ -6,7 +6,7 @@ Write this so someone with no background can follow.
 
 == What do I need?
 
-A `.cmk` file and the `scriptbook` CLI. Illustrated model: xref:general-knowledge:explanation/infrastructure/abstract-playbooks.adoc[Abstract playbooks].
+A `.cmk` file and the `scriptbook` CLI. Illustrated model: xref:general-knowledge::explanation/infrastructure/abstract-playbooks.adoc[Abstract playbooks].
 
 **Scriptbook** plays a CentrMark document on your machine. Run output lives in **sidecars**. The recipe is never rewritten.
 

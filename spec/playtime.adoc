@@ -40,6 +40,9 @@ Do **not** split PlayTime into a new GitHub repo yet. Today PlayTime is the D li
 .Aligned, not moved
 image::images/playtime-sibling-home.svg[alt="PlayTime in the Dev-Centr workshop; dotted maybe-later path to OpenShellOrg"]
 
+.Detect, filter, maybe ask, bind, run
+image::images/playtime-bind-flow.svg[alt="Five boxes: snapshot, filter, ask, bind, run"]
+
 == Who may call whom
 
 * CentrMark must not call the Equivalence Engine.

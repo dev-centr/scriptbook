@@ -46,6 +46,8 @@ endif::[]
 * Do **not** translate bash into PowerShell. Name an intent (`cli.install`) and let PlayTime ask the Equivalence Engine.
 SLP / `::: tangle` is for **source** literate programming. Scriptbook is for **run on my machine** docs.
 
+Illustrated model: link:https://docs.devcentr.org/general-knowledge/latest/explanation/infrastructure/abstract-playbooks.html[Abstract playbooks]. Component: link:https://docs.devcentr.org/scriptbook/[Explore the docs »]. Essay: link:https://devcentr.org/news/2026-08-13-intents-not-shell-translation[Intents, not shell translation].
+
 == About The Project
 
 Scriptbook executes CentrMark playbook documents and stores run history in sidecar files adjacent to the source document.

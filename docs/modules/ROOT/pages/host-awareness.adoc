@@ -1,4 +1,4 @@
-﻿= Host Awareness
+= Host Awareness
 :navtitle: Host Awareness
 :description: How PlayTime learns the OS without asking the Equivalence Engine.
 
@@ -10,7 +10,7 @@ A computer that will run PlayTime. No network is required for this step.
 
 == The problem in one sentence
 
-PlayTime must know â€œwhat computer is this?â€ **before** it asks the Equivalence Engine for commands. If it asked the engine in order to learn the OS, that would be a loop that never starts.
+PlayTime must know "what computer is this?" **before** it asks the Equivalence Engine for commands. If it asked the engine in order to learn the OS, that would be a loop that never starts.
 
 So: learn the host first (this page). Then bind intents (the engine).
 
@@ -26,31 +26,31 @@ Every probe must fill this record. Call the framework **Host Awareness**. Call t
 | Field | Meaning
 
 | `family`
-| Kernel class: `windows`, `linux`, `darwin`, `freebsd`, â€¦
+| Kernel class: `windows`, `linux`, `darwin`, `freebsd`, ...
 
 | `distro`
-| Product name: `ubuntu`, `fedora`, `windows`, `macos`, â€¦
+| Product name: `ubuntu`, `fedora`, `windows`, `macos`, ...
 
 | `like`
-| Cousins (Linux `ID_LIKE`): `debian`, `rhel`, â€¦
+| Cousins (Linux `ID_LIKE`): `debian`, `rhel`, ...
 
 | `version`
 | OS version string
 
 | `arch`
-| `x86_64`, `aarch64`, â€¦
+| `x86_64`, `aarch64`, ...
 
 | `overlays`
 | Extra hats, not a new family: `wsl`, `cygwin`, `msys`, `container`
 
 | `caps.shells`
-| Shells on PATH: `nu`, `pwsh`, `bash`, â€¦
+| Shells on PATH: `nu`, `pwsh`, `bash`, ...
 
 | `caps.pms`
-| Package managers on PATH: `winget`, `apt`, `nix`, â€¦
+| Package managers on PATH: `winget`, `apt`, `nix`, ...
 
 | `caps.formats`
-| Formats this host can run: `msi`, `deb`, `flatpak`, `winget`, â€¦
+| Formats this host can run: `msi`, `deb`, `flatpak`, `winget`, ...
 |===
 
 Filesystem rules already use `family` and `inherits` (see `equivalence-rules-filesystem` `context.sdl`). Host Awareness must stay aligned with that.
@@ -66,7 +66,7 @@ A **probe kind** is a tiny built-in action. A table cannot invent a new kernel A
 | Kind | What it does
 
 | `compileTime`
-| Use the D compilerâ€™s `version(Windows)` / `version(OSX)` / else.
+| Use the D compiler's `version(Windows)` / `version(OSX)` / else.
 
 | `uname`
 | POSIX `uname` (family, arch).
@@ -105,7 +105,7 @@ A new Unix-like distro that speaks `os-release` is data only (next bake). A kern
 
 == Growth loop
 
-Catalogs get richer â†’ CI bakes a better cascade â†’ PlayTime wakes up on more machines â†’ people write more playbooks â†’ they register more intents and probes â†’ the next bake is richer. Each release is a ratchet.
+Catalogs get richer -> CI bakes a better cascade -> PlayTime wakes up on more machines -> people write more playbooks -> they register more intents and probes -> the next bake is richer. Each release is a ratchet.
 
 .Ratchet at build time
 image::playtime-growth-ratchet.svg[alt="Rules to CI bake to shipped PlayTime to more playbooks back to new catalog rows"]

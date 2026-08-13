@@ -1,4 +1,4 @@
-﻿= Scriptbook sidecar schema
+= Scriptbook sidecar schema
 :navtitle: Sidecar schema
 :description: Run records next to the .cmk. The source file is never rewritten.
 
@@ -77,7 +77,7 @@ PlayTime writes these files. Authors edit only the `.cmk`.
 
 `shell` is for glue cells. Intent cells that run argv leave `shell` empty and set `runtime` to `argv`.
 
-The sidecar stores the **bound** realization (what actually ran). It is not a 3D address of format Ã— shell Ã— OS.
+The sidecar stores the **bound** realization (what actually ran). It is not a 3D address of format × shell × OS.
 
 == UI weave
 

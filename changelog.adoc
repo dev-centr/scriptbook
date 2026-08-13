@@ -10,6 +10,7 @@
 * Sidecar records host snapshot, answers, and resolved command
 * Example: `examples/install-gh.cmk` (same file on every OS)
 * Specs: `spec/playtime.adoc`, `spec/host-awareness.adoc`, updated playbook profile + sidecar
+* Illustrated Antora component (`docs/`) for the org hub; figures for layers, bind flow, facets, Host Awareness ratchet
 
 == 0.1.2 — 2026-08-03
 
