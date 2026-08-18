@@ -1,5 +1,9 @@
 = Changelog
 
+== Unreleased — 2026-08-18
+
+* Example playbooks for first-class coding monos (`examples/fonts/install-*.cmk`): Cascadia Mono, JetBrains Mono, Fira Code, Iosevka, Monaspace, JetBrains Mono Nerd Font. Intents (`cli.install`), not host shell translation. Catalog ids in `equivalence-rules-cli`.
+
 == 0.2.0 — 2026-08-13
 
 * Name the three layers: CentrMark (format), PlayTime (engine in `lib/`), Scriptbook (CLI app)

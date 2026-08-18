@@ -1,0 +1,19 @@
+---
+title "Install JetBrains Mono Nerd Font (intent playbook)"
+---
+
+= Install JetBrains Mono Nerd Font
+
+Glyph layer for CLI icons. Patches JetBrains Mono; does not replace Appearance's unpatched JetBrains Mono unless you choose it in the host terminal.
+
+Same file on every OS. PlayTime binds `cli.install` for tool `nerd-fonts-jetbrains-mono`.
+
+::: playbook [id="install-nerd-fonts-jetbrains-mono" shell="auto"]
+
+::: choose [id="pkg-format" prompt="How should we install JetBrains Mono Nerd Font?" intent="cli.install" tool="nerd-fonts-jetbrains-mono"]
+:::
+
+::: step [id="install" intent="cli.install" tool="nerd-fonts-jetbrains-mono" bind="pkg-format" confirm=true]
+:::
+
+:::

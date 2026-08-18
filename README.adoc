@@ -105,6 +105,7 @@ Nushell helpers: `nu/scriptbook.nu`.
 
 * `examples/smoke.cmk` — CI smoke
 * `examples/install-gh.cmk` — abstract `cli.install` playbook (same file on Windows and Linux)
+* `examples/fonts/install-*.cmk` — Cascadia Mono, JetBrains Mono, Fira Code, Iosevka, Monaspace, JetBrains Mono Nerd Font (`cli.install`; catalog in `equivalence-rules-cli`)
 * `examples/gh-pages-https.cmk` — Cloudflare ↔ GitHub Pages HTTPS algorithm (see also `dev-centr/general-knowledge` how-to + `scripts/check-gh-pages-https.nu`)
 * Specs: `spec/playtime.adoc`, `spec/host-awareness.adoc`, `spec/playbook-profile.adoc`
 

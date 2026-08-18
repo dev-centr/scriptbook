@@ -1,0 +1,19 @@
+---
+title "Install JetBrains Mono (intent playbook)"
+---
+
+= Install JetBrains Mono
+
+DevCentr Appearance supported alternate. OFL.
+
+Same file on every OS. PlayTime binds `cli.install` for tool `jetbrains-mono`.
+
+::: playbook [id="install-jetbrains-mono" shell="auto"]
+
+::: choose [id="pkg-format" prompt="How should we install JetBrains Mono?" intent="cli.install" tool="jetbrains-mono"]
+:::
+
+::: step [id="install" intent="cli.install" tool="jetbrains-mono" bind="pkg-format" confirm=true]
+:::
+
+:::

@@ -1,0 +1,19 @@
+---
+title "Install GitHub Monaspace (intent playbook)"
+---
+
+= Install Monaspace
+
+GitHub Next superfamily. Not the DevCentr Appearance default.
+
+Same file on every OS. PlayTime binds `cli.install` for tool `monaspace`.
+
+::: playbook [id="install-monaspace" shell="auto"]
+
+::: choose [id="pkg-format" prompt="How should we install Monaspace?" intent="cli.install" tool="monaspace"]
+:::
+
+::: step [id="install" intent="cli.install" tool="monaspace" bind="pkg-format" confirm=true]
+:::
+
+:::

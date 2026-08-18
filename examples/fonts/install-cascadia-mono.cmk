@@ -1,0 +1,22 @@
+---
+title "Install Cascadia Mono (intent playbook)"
+---
+
+= Install Cascadia Mono
+
+DevCentr Appearance **default**. Mono, not Cascadia *Code* (no ligatures).
+
+Same file on every OS. PlayTime binds `cli.install` for tool `cascadia-mono`.
+
+Need a catalog: `--catalog` pointing at `equivalence-rules-cli/catalog/tools.sdl`
+(or `SCRIPTBOOK_CATALOG`). Pass `--format brew` / `nix` / `choco` when several methods fit.
+
+::: playbook [id="install-cascadia-mono" shell="auto"]
+
+::: choose [id="pkg-format" prompt="How should we install Cascadia Mono?" intent="cli.install" tool="cascadia-mono"]
+:::
+
+::: step [id="install" intent="cli.install" tool="cascadia-mono" bind="pkg-format" confirm=true]
+:::
+
+:::

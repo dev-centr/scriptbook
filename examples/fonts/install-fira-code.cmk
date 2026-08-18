@@ -1,0 +1,19 @@
+---
+title "Install Fira Code (intent playbook)"
+---
+
+= Install Fira Code
+
+Ligature-first coding face. Not the DevCentr terminal default.
+
+Same file on every OS. PlayTime binds `cli.install` for tool `fira-code`.
+
+::: playbook [id="install-fira-code" shell="auto"]
+
+::: choose [id="pkg-format" prompt="How should we install Fira Code?" intent="cli.install" tool="fira-code"]
+:::
+
+::: step [id="install" intent="cli.install" tool="fira-code" bind="pkg-format" confirm=true]
+:::
+
+:::

@@ -1,0 +1,19 @@
+---
+title "Install Iosevka (intent playbook)"
+---
+
+= Install Iosevka
+
+Parametric high-density mono. Not the DevCentr terminal default.
+
+Same file on every OS. PlayTime binds `cli.install` for tool `iosevka`.
+
+::: playbook [id="install-iosevka" shell="auto"]
+
+::: choose [id="pkg-format" prompt="How should we install Iosevka?" intent="cli.install" tool="iosevka"]
+:::
+
+::: step [id="install" intent="cli.install" tool="iosevka" bind="pkg-format" confirm=true]
+:::
+
+:::
