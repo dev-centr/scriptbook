@@ -1,0 +1,17 @@
+---
+title: Install methods are argv, not shell costumes
+---
+flowchart LR
+  accTitle: Install methods are argv, not shell costumes
+  accDescr: A winget install argument vector runs directly and does not need a bash, PowerShell, or Nushell wrapper.
+  argv["argv\n[winget, install,\n--id, GitHub.cli]\n\nSpawn with no shell."]
+  bash["bash coat\nnot needed"]
+  pwsh["pwsh coat\nnot needed"]
+  nu["nu coat\nnot needed"]
+  argv -.-> bash
+  argv -.-> pwsh
+  argv -.-> nu
+  class argv success
+  class bash,pwsh,nu primary
+  classDef primary fill:#ffffff,stroke:#2c2c2c,color:#1a1a1a,stroke-width:2px,stroke-dasharray:6 4
+  classDef success fill:#1f3a2e,stroke:#1f3a2e,color:#f7f3e8,stroke-width:2px

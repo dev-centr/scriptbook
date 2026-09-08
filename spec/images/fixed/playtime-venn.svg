@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="380" viewBox="0 0 920 380" role="img" aria-labelledby="title desc">
+  <title id="title">Ask only the overlap: this tool's methods and this host's capabilities</title>
+  <desc id="desc">Two circles: catalog methods for a tool, and formats this computer can run. The questionnaire is only the overlap, and only if more than one method remains.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .c1 { fill: #e8f0ea; stroke: #1f3a2e; stroke-width: 2; fill-opacity: 0.85; }
+      .c2 { fill: #f7f3e8; stroke: #6b5a3e; stroke-width: 2; fill-opacity: 0.85; }
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="380"/>
+  <text class="label" x="32" y="36">NOT A GLOBAL ENUM</text>
+  <text class="t" x="32" y="68" font-size="22">Questionnaire = this tool's methods on this host.</text>
+
+  <circle class="c1" cx="280" cy="210" r="110"/>
+  <circle class="c2" cx="400" cy="210" r="110"/>
+  <text class="s" x="175" y="160">catalog for gh</text>
+  <text class="s" x="175" y="180">msi, winget,</text>
+  <text class="s" x="175" y="200">deb, nix, ...</text>
+  <text class="t" x="300" y="216" font-size="16">ask here</text>
+  <text class="s" x="430" y="160">this computer</text>
+  <text class="s" x="430" y="180">winget, msi</text>
+  <text class="s" x="430" y="200">(no flatpak)</text>
+
+  <text class="s" x="560" y="150">If the overlap is one method,</text>
+  <text class="s" x="560" y="170">do not ask. Just bind.</text>
+  <text class="s" x="560" y="210">If it is several, Scriptbook</text>
+  <text class="s" x="560" y="230">asks --format or a choose cell.</text>
+  <text class="s" x="560" y="270">Never show rpm on Windows.</text>
+  <text class="s" x="560" y="290">Never show "bash" as a format.</text>
+</svg>

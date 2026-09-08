@@ -1,0 +1,13 @@
+---
+title: Overlays are stickers, not new planets
+---
+flowchart LR
+  accTitle: Overlays are stickers, not new planets
+  accDescr: WSL is an overlay on Linux, Cygwin is an overlay on Windows, and containers overlay any family rather than creating new operating-system families.
+  linux(("Linux\nfamily")) --- wsl["overlay: wsl"]
+  windows(("Windows\nfamily")) --- cygwin["overlay: cygwin"]
+  any(("Any\nfamily")) --- container["overlay: container"]
+  class linux,windows,any secondary
+  class wsl,cygwin,container warning
+  classDef secondary fill:#e8f0ea,stroke:#1f3a2e,color:#1a1a1a,stroke-width:2px
+  classDef warning fill:#f7f3e8,stroke:#6b5a3e,color:#1a1a1a,stroke-width:2px

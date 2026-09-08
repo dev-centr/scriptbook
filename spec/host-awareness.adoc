@@ -15,6 +15,7 @@ PlayTime must know “what computer is this?” **before** it asks the Equivalen
 So: learn the host first (this page). Then bind intents (the engine).
 
 .Snapshot, then dereference
+[.themed-svg]
 image::images/playtime-bootstrap.svg[alt="Deadlock cycle crossed out; snapshot then Equivalence Engine bind"]
 
 == Host Identity Record
@@ -108,14 +109,17 @@ A new Unix-like distro that speaks `os-release` is data only (next bake). A kern
 Catalogs get richer → CI bakes a better cascade → PlayTime wakes up on more machines → people write more playbooks → they register more intents and probes → the next bake is richer. Each release is a ratchet.
 
 .Ratchet at build time
+[.themed-svg]
 image::images/playtime-growth-ratchet.svg[alt="Rules to CI bake to shipped PlayTime to more playbooks back to new catalog rows"]
 
 Humans stay at the intent layer. When the world changes, they redefine the bottom catalog, not the playbook.
 
 .Attic intents, basement argv
+[.themed-svg]
 image::images/playtime-attic-basement.svg[alt="House: intents in the attic, PlayTime stairs, catalog in the basement"]
 
 Overlays (`wsl`, `cygwin`, `container`) are stickers on a family, not new planets.
 
 .Overlays are stickers
+[.themed-svg]
 image::images/playtime-overlays.svg[alt="Family circles with wsl, cygwin, container stickers"]

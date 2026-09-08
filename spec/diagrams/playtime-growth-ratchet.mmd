@@ -1,0 +1,11 @@
+---
+title: Growth loop at build time
+---
+flowchart LR
+  accTitle: Growth loop at build time
+  accDescr: Shared rules flow through a CI bake into shipped PlayTime, enabling more playbooks and producing richer catalog rows for the next release.
+  rules["Rules catalogs\nprobes and intents"] --> bake["CI bake\nEE as compiler"] --> shipped["Shipped PlayTime\ncascade in binary"] --> books["Playbooks on more hosts\nhumans write intents"] -.-> rows["New rows\nprobes, methods, formats"] -.-> rules
+  class rules,shipped,books,rows primary
+  class bake success
+  classDef primary fill:#ffffff,stroke:#2c2c2c,color:#1a1a1a,stroke-width:2px
+  classDef success fill:#1f3a2e,stroke:#1f3a2e,color:#f7f3e8,stroke-width:2px

@@ -1,0 +1,26 @@
+{
+  "deterministicIds": true,
+  "deterministicIDSeed": "dev-centr-canonical-diagrams-v1",
+  "htmlLabels": false,
+  "flowchart": {
+    "htmlLabels": false,
+    "curve": "basis",
+    "useMaxWidth": true
+  },
+  "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+  "securityLevel": "strict",
+  "theme": "base",
+  "themeVariables": {
+    "background": "#f3f1ec",
+    "primaryColor": "#ffffff",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#2c2c2c",
+    "lineColor": "#2c2c2c",
+    "secondaryColor": "#e8f0ea",
+    "tertiaryColor": "#f7f3e8",
+    "clusterBkg": "#f7f3e8",
+    "clusterBorder": "#6b5a3e",
+    "edgeLabelBackground": "#f3f1ec",
+    "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif"
+  }
+}

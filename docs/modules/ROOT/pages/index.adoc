@@ -13,6 +13,7 @@ A `.cmk` file and the `scriptbook` CLI. Illustrated model: xref:general-knowledg
 This is not Synchronous Literate Programming (that tangles *source*). This is not a bash-to-PowerShell translator.
 
 .Cookbook, kitchen, waiter
+[.themed-svg]
 image::playtime-layers.svg[alt="Three layers: CentrMark the book, PlayTime the stage, Scriptbook the app"]
 
 [cols="1,2", options="header"]

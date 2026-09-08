@@ -1,0 +1,314 @@
+{
+  "$schema": "https://unpkg.com/@dev-centr/themed-svg@0.1.1/schema/themed-svg-manifest-v1.schema.json",
+  "schemaVersion": 1,
+  "namespace": "diagram",
+  "source": {
+    "kind": "mermaid",
+    "uri": "playtime-overlays.mmd",
+    "generator": "@mermaid-js/mermaid-cli@11.17.0"
+  },
+  "tokens": [
+    {
+      "id": "color.canvas"
+    },
+    {
+      "id": "color.surface.primary"
+    },
+    {
+      "id": "color.surface.secondary"
+    },
+    {
+      "id": "color.text.primary"
+    },
+    {
+      "id": "color.border.primary"
+    },
+    {
+      "id": "color.edge"
+    },
+    {
+      "id": "color.accent.primary"
+    },
+    {
+      "id": "color.accent.on-primary"
+    },
+    {
+      "id": "color.status.warning"
+    },
+    {
+      "id": "color.status.danger"
+    }
+  ],
+  "defaultPreset": "light",
+  "presets": {
+    "light": {
+      "color.canvas": "#f3f1ec",
+      "color.surface.primary": "#ffffff",
+      "color.surface.secondary": "#e8f0ea",
+      "color.text.primary": "#1a1a1a",
+      "color.border.primary": "#2c2c2c",
+      "color.edge": "#2c2c2c",
+      "color.accent.primary": "#1f3a2e",
+      "color.accent.on-primary": "#f7f3e8",
+      "color.status.warning": "#f7f3e8",
+      "color.status.danger": "#f6e8e6"
+    },
+    "dark": {
+      "color.canvas": "#10161a",
+      "color.surface.primary": "#182126",
+      "color.surface.secondary": "#203038",
+      "color.text.primary": "#edf4f2",
+      "color.border.primary": "#78909b",
+      "color.edge": "#a8bdc4",
+      "color.accent.primary": "#55d6b2",
+      "color.accent.on-primary": "#071512",
+      "color.status.warning": "#4a3e24",
+      "color.status.danger": "#542d2d"
+    }
+  },
+  "bindings": [
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root",
+      "property": "background-color",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.canvas"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root text",
+      "property": "fill",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .label-container",
+      "property": "fill",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.surface.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .label-container",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .cluster rect",
+      "property": "fill",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.surface.secondary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .cluster rect",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .actor",
+      "property": "fill",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.surface.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .actor",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .labelBox",
+      "property": "fill",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.surface.secondary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .labelBox",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .flowchart-link",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .actor-line",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .messageLine0",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .messageLine1",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root .loopLine",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root marker path",
+      "property": "fill",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": ".themed-svg-root marker path",
+      "property": "stroke",
+      "styleSelector": "#themed-svg-bindings",
+      "token": "color.edge"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".primary .label-container",
+      "property": "fill",
+      "token": "color.surface.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".primary .label-container",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".primary .label",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".primary text",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".secondary .label-container",
+      "property": "fill",
+      "token": "color.surface.secondary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".secondary .label-container",
+      "property": "stroke",
+      "token": "color.accent.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".secondary .label",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".secondary text",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".warning .label-container",
+      "property": "fill",
+      "token": "color.status.warning"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".warning .label-container",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".warning .label",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".warning text",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".success .label-container",
+      "property": "fill",
+      "token": "color.accent.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".success .label-container",
+      "property": "stroke",
+      "token": "color.accent.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".success .label",
+      "property": "color",
+      "token": "color.accent.on-primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".success text",
+      "property": "fill",
+      "token": "color.accent.on-primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".danger .label-container",
+      "property": "fill",
+      "token": "color.status.danger"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".danger .label-container",
+      "property": "stroke",
+      "token": "color.status.danger"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".danger .label",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "inline-style",
+      "selector": ".danger text",
+      "property": "fill",
+      "token": "color.text.primary"
+    }
+  ],
+  "fallback": {
+    "unresolvedToken": "error",
+    "missingTarget": "warn"
+  }
+}

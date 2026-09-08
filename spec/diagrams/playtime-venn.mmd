@@ -1,0 +1,23 @@
+---
+title: Ask only the overlap
+---
+flowchart LR
+  accTitle: Ask only the overlap
+  accDescr: The questionnaire contains only methods available for the requested tool that this host can run, and asks only when more than one remains.
+  all["Catalog methods for gh\nmsi / winget / deb / nix / flatpak"]
+  caps["This computer\nWindows capabilities\nwinget / msi / no flatpak"]
+  overlap["Host-supported overlap: winget / msi"]
+  all --> overlap
+  caps --> overlap
+  overlap --> decision{"How many methods?"}
+  decision -->|"one"| bind["Bind without asking"]
+  decision -->|"several"| ask["Scriptbook asks --format"]
+  class all,caps primary
+  class overlap secondary
+  class decision warning
+  class bind success
+  class ask primary
+  classDef primary fill:#ffffff,stroke:#2c2c2c,color:#1a1a1a,stroke-width:2px
+  classDef secondary fill:#e8f0ea,stroke:#1f3a2e,color:#1a1a1a,stroke-width:2px
+  classDef warning fill:#f7f3e8,stroke:#6b5a3e,color:#1a1a1a,stroke-width:2px
+  classDef success fill:#1f3a2e,stroke:#1f3a2e,color:#f7f3e8,stroke-width:2px

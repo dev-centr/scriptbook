@@ -11,7 +11,11 @@
 !/examples/
 !/spec/
 !/docs/
+!/scripts/
 !/*.adoc
+!/package.json
+!/pnpm-lock.yaml
+!/pnpm-workspace.yaml
 !/LICENSE*
 !/README*
 !/licenses/
@@ -24,6 +28,7 @@
 !/examples/**
 !/spec/**
 !/docs/**
+!/scripts/**
 
 # Build / sidecars
 **/bin/

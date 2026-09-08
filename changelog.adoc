@@ -1,5 +1,11 @@
 = Changelog
 
+== Unreleased — 2026-09-08
+
+* All twelve PlayTime diagrams now ship editable Mermaid sources, explicit Themed SVG v1 manifests, preserved fixed originals, and generated standalone-adaptive and host SVGs.
+* Antora and specification image paths remain stable; diagram image blocks are marked for progressive enhancement by the shared themed-SVG runtime.
+* Pinned generation, freshness, XML, and SVG safety checks keep committed diagram artifacts reproducible in CI and local builds.
+
 == Unreleased — 2026-08-18
 
 * Example playbooks for first-class coding monos (`examples/fonts/install-*.cmk`): Cascadia Mono, JetBrains Mono, Fira Code, Iosevka, Monaspace, JetBrains Mono Nerd Font. Intents (`cli.install`), not host shell translation. Catalog ids in `equivalence-rules-cli`.

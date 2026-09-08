@@ -1,0 +1,22 @@
+---
+title: "Koan: MSI or bash?"
+---
+flowchart LR
+  accTitle: Koan: MSI or bash?
+  accDescr: Two doors in a hallway. One is a package format. One is a parser. The teacher does not let you treat them as a choice.
+  question["The student asked:\nMSI or bash?"]
+  msi["Door: MSI\na package format"]
+  bash["Door: bash\na string parser"]
+  answer["The teacher opened neither.\nThat is not a choice."]
+  question --> msi
+  question --> bash
+  msi --> answer
+  bash --> answer
+  class question primary
+  class msi secondary
+  class bash danger
+  class answer warning
+  classDef primary fill:#ffffff,stroke:#2c2c2c,color:#1a1a1a,stroke-width:2px
+  classDef secondary fill:#e8f0ea,stroke:#1f3a2e,color:#1a1a1a,stroke-width:2px
+  classDef danger fill:#f6e8e6,stroke:#8a3b22,color:#1a1a1a,stroke-width:2px
+  classDef warning fill:#f7f3e8,stroke:#6b5a3e,color:#1a1a1a,stroke-width:2px

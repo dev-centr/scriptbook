@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">Overlays are stickers, not new planets</title>
+  <desc id="desc">WSL, Cygwin, and containers are overlays on a kernel family, not extra OS families.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .planet { fill: #e8f0ea; stroke: #1f3a2e; stroke-width: 2; }
+      .sticker { fill: #f7f3e8; stroke: #6b5a3e; stroke-width: 1.5; }
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="360"/>
+  <text class="label" x="32" y="36">FAMILY PLUS HATS</text>
+  <text class="t" x="32" y="68" font-size="22">WSL is Linux with a sticker. Not a new planet.</text>
+
+  <circle class="planet" cx="160" cy="200" r="70"/>
+  <text class="t" x="118" y="196" font-size="16">linux</text>
+  <text class="s" x="122" y="216">family</text>
+  <rect class="sticker" x="200" y="150" width="90" height="36" rx="4" transform="rotate(-12 245 168)"/>
+  <text class="s" x="218" y="172" transform="rotate(-12 245 168)">wsl</text>
+
+  <circle class="planet" cx="430" cy="200" r="70"/>
+  <text class="t" x="388" y="196" font-size="16">windows</text>
+  <text class="s" x="400" y="216">family</text>
+  <rect class="sticker" x="470" y="148" width="100" height="36" rx="4" transform="rotate(10 520 166)"/>
+  <text class="s" x="488" y="170" transform="rotate(10 520 166)">cygwin</text>
+
+  <circle class="planet" cx="700" cy="200" r="70"/>
+  <text class="t" x="668" y="196" font-size="16">any</text>
+  <text class="s" x="668" y="216">family</text>
+  <rect class="sticker" x="740" y="150" width="120" height="36" rx="4" transform="rotate(-8 800 168)"/>
+  <text class="s" x="752" y="172" transform="rotate(-8 800 168)">container</text>
+
+  <text class="s" x="32" y="320">Caps and format filters read overlays. Do not explode family for these.</text>
+</svg>

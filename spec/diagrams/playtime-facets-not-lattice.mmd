@@ -1,0 +1,17 @@
+---
+title: Facets compose at bind time
+---
+flowchart LR
+  accTitle: Facets compose at bind time
+  accDescr: Independent operating-system, format, and runtime columns are contrasted with a forbidden path lattice that multiplies format by shell.
+  subgraph wanted["Wanted - independent facets"]
+    table["os | format | runtime\nwindows | winget | argv\nlinux | deb | argv\nlinux | flatpak | argv\nany | script | bash"]
+  end
+  subgraph forbidden["Forbidden - path-segment lattice"]
+    paths["windows/winget/pwsh/msi\nwindows/winget/nu/msi\nwindows/winget/bash/msi\nlinux/apt/bash/deb\nlinux/apt/pwsh/deb\n... forever ..."]
+  end
+  table ~~~ paths
+  class table success
+  class paths danger
+  classDef success fill:#e8f0ea,stroke:#1f3a2e,color:#1a1a1a,stroke-width:2px
+  classDef danger fill:#f8e6dc,stroke:#8a3b22,color:#1a1a1a,stroke-width:2px

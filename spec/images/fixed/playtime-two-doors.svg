@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="380" viewBox="0 0 920 380" role="img" aria-labelledby="title desc">
+  <title id="title">Koan: MSI or bash?</title>
+  <desc id="desc">Two doors in a hallway. One is a package format. One is a parser. The teacher does not let you treat them as a choice.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .hall { fill: #fff; stroke: #2c2c2c; stroke-width: 2; }
+      .door { fill: #e8f0ea; stroke: #1f3a2e; stroke-width: 2; }
+      .wrong { fill: #f8e6dc; stroke: #8a3b22; stroke-width: 2; }
+      .knob { fill: #6b5a3e; }
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="380"/>
+  <text class="label" x="32" y="36">A KOAN</text>
+  <text class="t" x="32" y="68" font-size="22">The student asked: MSI or bash?</text>
+
+  <rect class="hall" x="80" y="96" width="760" height="200" rx="4"/>
+  <text class="s" x="100" y="128">A hallway with two doors is not a questionnaire.</text>
+
+  <rect class="door" x="180" y="150" width="140" height="120" rx="2"/>
+  <circle class="knob" cx="300" cy="210" r="6"/>
+  <text class="t" x="214" y="210" font-size="16">MSI</text>
+  <text class="s" x="200" y="290">a package format</text>
+
+  <rect class="wrong" x="560" y="150" width="140" height="120" rx="2"/>
+  <circle class="knob" cx="680" cy="210" r="6"/>
+  <text class="t" x="594" y="210" font-size="16">bash</text>
+  <text class="s" x="575" y="290">a string parser</text>
+
+  <text class="t" x="32" y="340" font-size="16">The teacher did not open either door. "That is not a choice."</text>
+</svg>

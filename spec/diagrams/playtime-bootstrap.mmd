@@ -1,0 +1,17 @@
+---
+title: Bootstrap is a snapshot, not an intent
+---
+flowchart LR
+  accTitle: Bootstrap is a snapshot, not an intent
+  accDescr: A forbidden runtime deadlock is contrasted with PlayTime snapshotting the host before Equivalence Engine dereferences intents.
+  subgraph bad["Deadlock - never starts"]
+    ask["Ask EE for os.family"] --> choose["Pick a method for asking os.family"] --> ask
+  end
+  bad ~~~ good
+  subgraph good["Snapshot, then dereference"]
+    binary["PlayTime binary\nknows NT vs POSIX"] --> snapshot["Freeze Host Identity Record"] --> bind["EE binds cli.install"]
+  end
+  class ask,choose danger
+  class binary,snapshot,bind success
+  classDef danger fill:#f8e6dc,stroke:#8a3b22,color:#1a1a1a,stroke-width:2px
+  classDef success fill:#e8f0ea,stroke:#1f3a2e,color:#1a1a1a,stroke-width:2px

@@ -1,0 +1,21 @@
+---
+title: "Play time: detect, filter, maybe ask, bind, run"
+---
+flowchart LR
+  accTitle: Play time: detect, filter, maybe ask, bind, run
+  accDescr: An abstract playbook is bound to this computer through a host snapshot, method filtering, an optional choice, argv binding, and execution.
+
+  snapshot["1. Snapshot\nHost Awareness\nfamily, PATH, formats"]
+  filter["2. Filter\ncatalog rows this host can run"]
+  ask{"3. Ask?\none: skip\nseveral: choose"}
+  bind["4. Bind\nintent to argv\nor more intents"]
+  run["5. Run\nspawn argv\nwrite sidecar"]
+
+  snapshot --> filter --> ask --> bind --> run
+  class snapshot,filter,bind primary
+  class ask warning
+  class run success
+
+  classDef primary fill:#ffffff,stroke:#2c2c2c,color:#1a1a1a,stroke-width:2px
+  classDef warning fill:#f7f3e8,stroke:#6b5a3e,color:#1a1a1a,stroke-width:2px
+  classDef success fill:#1f3a2e,stroke:#1f3a2e,color:#f7f3e8,stroke-width:2px

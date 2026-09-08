@@ -1,0 +1,23 @@
+---
+title: Humans live in the attic
+---
+flowchart LR
+  accTitle: Humans live in the attic
+  accDescr: Abstract human intents live above PlayTime, which dereferences them into ground argv methods in the catalog basement.
+  subgraph house["Vocabulary grows up - realizations stay down"]
+    direction TB
+    attic["Attic - human intents\ninstall gh\nopen port 443"]
+    stairs["Stairs - PlayTime\ndereference and expand"]
+    basement["Basement - catalog\nwinget / apt / nix argv\nrewrite this when the world moves"]
+    attic --> stairs --> basement
+  end
+  outcome["One abstract playbook\nNo separate Windows and Linux scripts"]
+  basement --> outcome
+  class attic secondary
+  class stairs primary
+  class basement warning
+  class outcome success
+  classDef primary fill:#ffffff,stroke:#2c2c2c,color:#1a1a1a,stroke-width:2px
+  classDef secondary fill:#e8f0ea,stroke:#1f3a2e,color:#1a1a1a,stroke-width:2px
+  classDef warning fill:#f7f3e8,stroke:#6b5a3e,color:#1a1a1a,stroke-width:2px
+  classDef success fill:#1f3a2e,stroke:#1f3a2e,color:#f7f3e8,stroke-width:2px

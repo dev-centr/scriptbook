@@ -1,0 +1,19 @@
+---
+title: PlayTime stays in the Dev-Centr workshop
+---
+flowchart LR
+  accTitle: PlayTime stays in the Dev-Centr workshop
+  accDescr: PlayTime remains in the Dev-Centr Scriptbook workshop while a possible future path points toward related OpenShellOrg shell-boundary work.
+  subgraph dc["Dev-Centr - practitioner orchestration"]
+    scriptbook["Scriptbook app"] --> playtime["PlayTime - building"]
+  end
+  subgraph oso["OpenShellOrg - shell boundary"]
+    cousins["argv honesty / SOS\nentrypoint dispatch\nHost Awareness"]
+  end
+  playtime -. "maybe later - not now" .-> cousins
+  class scriptbook secondary
+  class playtime success
+  class cousins primary
+  classDef primary fill:#ffffff,stroke:#2c2c2c,color:#1a1a1a,stroke-width:2px
+  classDef secondary fill:#e8f0ea,stroke:#1f3a2e,color:#1a1a1a,stroke-width:2px
+  classDef success fill:#1f3a2e,stroke:#1f3a2e,color:#f7f3e8,stroke-width:2px

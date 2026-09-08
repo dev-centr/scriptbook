@@ -1,0 +1,16 @@
+---
+title: Three layers - CentrMark, PlayTime, Scriptbook
+---
+flowchart LR
+  accTitle: Three layers - CentrMark, PlayTime, Scriptbook
+  accDescr: CentrMark is the book, PlayTime is the kitchen that binds and runs it, and Scriptbook is the app that opens the book and asks the user.
+  book["CentrMark\nthe .cmk file\n\n::: playbook\n::: step intent=...\n::: choose\n\nWrites words. Never runs them."]
+  engine["PlayTime\nthe engine / kitchen\n\nBinds. Runs.\nWrites sidecars."]
+  app["Scriptbook\nthe app - CLI, later GUI\n\nscriptbook run book.cmk\n--format winget\n\nOpens the book. Asks you."]
+  book --> engine --> app
+  class book secondary
+  class engine success
+  class app warning
+  classDef secondary fill:#e8f0ea,stroke:#1f3a2e,color:#1a1a1a,stroke-width:2px
+  classDef success fill:#1f3a2e,stroke:#1f3a2e,color:#f7f3e8,stroke-width:2px
+  classDef warning fill:#f7f3e8,stroke:#6b5a3e,color:#1a1a1a,stroke-width:2px
