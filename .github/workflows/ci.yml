@@ -7,25 +7,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  diagrams:
+  diagram-deliveries:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10.17.1
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - name: Install diagram dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Check generated diagrams
-        run: pnpm test
+      - name: Check canonical PlayTime diagrams
+        run: python scripts/sync-playtime-diagrams.py --check
 
   build-and-smoke:
     strategy:

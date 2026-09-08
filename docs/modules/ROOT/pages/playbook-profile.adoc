@@ -23,7 +23,6 @@ See link:playtime.adoc[PlayTime, Scriptbook, and CentrMark]. Short version:
 Do **not** write one bash script and hope the Equivalence Engine rewrites it into PowerShell. That is a compiler, and we do not have one.
 
 .Do not put a bash script through a blender
-[.themed-svg]
 image::playtime-wrong-translator.svg[alt="A Linux apt script enters a hot-replace grinder and comes out as broken Windows commands"]
 
 Write either:
@@ -142,7 +141,6 @@ Do not invent context paths like `windows/pwsh/msi`. Shell is not a package form
 image::playtime-facets-not-lattice.svg[alt="Catalog table of os, format, runtime versus a forbidden path-segment lattice"]
 
 .The student asked: MSI or bash?
-[.themed-svg]
 image::playtime-two-doors.svg[alt="Two doors labeled MSI and bash; that is not a questionnaire"]
 
 * Format = which installer (msi, deb, flatpak, winget, ...)

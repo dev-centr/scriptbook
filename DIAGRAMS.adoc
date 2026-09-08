@@ -1,0 +1,47 @@
+= PlayTime diagram deliveries
+
+The editable Mermaid sources and Themed SVG manifests for the ten PlayTime
+diagrams are canonical in
+https://github.com/dev-centr/general-knowledge[dev-centr/general-knowledge] at
+commit `137492ea980910d1286663654948bd82d2d5ac4b`.
+Scriptbook does not duplicate those sources or manifests.
+
+Scriptbook vendors each canonical delivery in both `spec/images/` and
+`docs/modules/ROOT/images/`:
+
+* `playtime-*.svg` is standalone-adaptive for external image use.
+* `playtime-*.host.svg` is host-themed for sanitized runtime inlining.
+* `playtime-*.fixed.svg` preserves the canonical concrete-color delivery.
+
+The vendored set is limited to `argv`, `attic-basement`, `bind-flow`,
+`bootstrap`, `facets-not-lattice`, `growth-ratchet`, `layers`, `overlays`,
+`sibling-home`, and `venn`. The `two-doors` and `wrong-translator` illustrations
+are local fixed assets and are not part of this synchronization.
+
+== Check committed deliveries
+
+The check uses pinned SHA-256 digests and does not contact the network:
+
+[source,shell]
+----
+python scripts/sync-playtime-diagrams.py --check
+----
+
+It checks freshness, XML parsing, accessibility metadata, active-content and
+external-resource safety, delivery-mode invariants, UTF-8 encoding, and Antora
+roles.
+
+== Synchronize from a local canonical checkout
+
+The checkout may be a sibling repository containing the pinned Git object, even
+when its current worktree is on another commit. An exported checkout is also
+accepted when its files exactly match the pinned hashes.
+
+[source,shell]
+----
+python scripts/sync-playtime-diagrams.py --sync --source ../general-knowledge
+----
+
+The synchronizer reads only the pinned commit, verifies every artifact digest,
+writes both public copies, and runs the full local check. Fetching the canonical
+repository is an explicit maintenance step, never part of a normal docs build.

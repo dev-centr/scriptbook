@@ -58,7 +58,6 @@ image::playtime-bind-flow.svg[alt="Five boxes: snapshot, filter, ask, bind, run"
 This is **not** a translator that rewrites bash into PowerShell.
 
 .Do not put a bash script through a blender
-[.themed-svg]
 image::playtime-wrong-translator.svg[alt="A Linux apt script enters a hot-replace grinder and comes out as broken Windows commands"]
 
 A playbook should name an **intent** (what you want). PlayTime binds that intent to a command for *this* computer. Glue that is already portable can stay as a Nushell (or other) script cell.

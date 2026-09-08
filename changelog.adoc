@@ -2,9 +2,9 @@
 
 == Unreleased — 2026-09-08
 
-* All twelve PlayTime diagrams now ship editable Mermaid sources, explicit Themed SVG v1 manifests, preserved fixed originals, and generated standalone-adaptive and host SVGs.
-* Antora and specification image paths remain stable; diagram image blocks are marked for progressive enhancement by the shared themed-SVG runtime.
-* Pinned generation, freshness, XML, and SVG safety checks keep committed diagram artifacts reproducible in CI and local builds.
+* The ten canonical PlayTime diagrams now ship exact standalone-adaptive, host-themed, and fixed deliveries from `dev-centr/general-knowledge` commit `137492ea980910d1286663654948bd82d2d5ac4b`.
+* Stable image paths under `spec/images/` and `docs/modules/ROOT/images/` stay synchronized without duplicating the canonical Mermaid sources or manifests.
+* A pinned offline check verifies artifact freshness, XML, accessibility, SVG safety, delivery modes, UTF-8 encoding, and Antora enhancement roles.
 
 == Unreleased — 2026-08-18
 

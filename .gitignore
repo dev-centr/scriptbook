@@ -13,9 +13,6 @@
 !/docs/
 !/scripts/
 !/*.adoc
-!/package.json
-!/pnpm-lock.yaml
-!/pnpm-workspace.yaml
 !/LICENSE*
 !/README*
 !/licenses/
@@ -31,6 +28,8 @@
 !/scripts/**
 
 # Build / sidecars
+**/__pycache__/
+**/*.pyc
 **/bin/
 **/.dub/
 **/dub.selections.json

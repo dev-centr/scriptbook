@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="400" viewBox="0 0 920 400" role="img" aria-labelledby="title desc">
+  <title id="title">Bootstrap is a snapshot, not an intent</title>
+  <desc id="desc">Left: a deadlock asking the engine what OS it is. Right: PlayTime snapshots the host, then Equivalence Engine dereferences intents.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3f1ec; }
+      .t { font-family: Georgia, "Times New Roman", serif; fill: #1a1a1a; }
+      .s { font-family: "Segoe UI", system-ui, sans-serif; fill: #333; font-size: 13px; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; fill: #5a5a5a; font-size: 12px; letter-spacing: 0.04em; }
+      .bad { fill: #f8e6dc; stroke: #8a3b22; stroke-width: 2; }
+      .ok { fill: #e8f0ea; stroke: #1f3a2e; stroke-width: 2; }
+      .arrow { stroke: #2c2c2c; stroke-width: 1.75; fill: none; marker-end: url(#m); }
+      .x { stroke: #8a3b22; stroke-width: 6; }
+    </style>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2c2c2c"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="920" height="400"/>
+  <text class="label" x="32" y="36">NO CHICKEN, NO EGG</text>
+  <text class="t" x="32" y="68" font-size="22">"What OS am I?" is not an Equivalence Engine question.</text>
+
+  <rect class="bad" x="32" y="100" width="400" height="230" rx="4"/>
+  <text class="t" x="52" y="136" font-size="16">Deadlock</text>
+  <text class="s" x="52" y="168">Ask EE for os.family</text>
+  <text class="s" x="52" y="188">so EE can pick a method</text>
+  <text class="s" x="52" y="208">for asking os.family</text>
+  <circle cx="232" cy="260" r="40" fill="none" stroke="#8a3b22" stroke-width="2"/>
+  <path class="arrow" d="M232,220 A40,40 0 1,1 231.9,220"/>
+  <path class="x" d="M52,300 L412,140"/>
+  <text class="s" x="52" y="312">Never starts. Do not register this.</text>
+
+  <rect class="ok" x="488" y="100" width="400" height="230" rx="4"/>
+  <text class="t" x="508" y="136" font-size="16">Snapshot, then dereference</text>
+  <text class="s" x="508" y="168">1. PlayTime already is a binary.</text>
+  <text class="s" x="508" y="188">   It knows NT vs POSIX.</text>
+  <text class="s" x="508" y="208">2. Freeze Host Identity Record.</text>
+  <text class="s" x="508" y="228">3. Now EE may bind cli.install.</text>
+  <text class="s" x="508" y="260">os.version as a later step is fine.</text>
+  <text class="s" x="508" y="280">It uses the snapshot you already have.</text>
+  <text class="s" x="508" y="312">pwsh-on-Linux does not save step 1.</text>
+</svg>

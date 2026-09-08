@@ -111,6 +111,13 @@ Nushell helpers: `nu/scriptbook.nu`.
 
 link:#readme-top[back to top]
 
+== Project records
+
+* link:changelog.adoc[Changelog]
+* link:DIAGRAMS.adoc[PlayTime diagram provenance and synchronization]
+
+link:#readme-top[back to top]
+
 == License
 
 *Centr Source License 1.0 — Branding (CSL-1.0-B)*. See link:LICENSE[LICENSE].
