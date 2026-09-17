@@ -1,6 +1,5 @@
-name: scriptbook
-title: Scriptbook
+name: tools
+title: Tools
 version: ~
-start_page: ROOT:index.adoc
 nav:
-  - modules/ROOT/nav.adoc
+- modules/scriptbook/nav.adoc
