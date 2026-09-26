@@ -1,5 +1,9 @@
 = Changelog
 
+== 2026-09-26 - Playtime SVG dark-text vars
+
+* Adapt duplicated `playtime-*.svg` baked figures so Mermaid `#my-svg` fill / `.label` color use `color.text.primary` themed-svg vars (keeps dark-mode text readable; matches general-knowledge pipeline).
+
 == Unreleased — 2026-09-08
 
 * The ten canonical PlayTime diagrams now ship exact standalone-adaptive, host-themed, and fixed deliveries from `dev-centr/general-knowledge` commit `137492ea980910d1286663654948bd82d2d5ac4b`.
