@@ -38,12 +38,17 @@ Scriptbook: play CentrMark .cmk script documents; sidecar run output (never rewr
 link:https://github.com/dev-centr/scriptbook/issues[Report Bug] ·
 link:https://github.com/dev-centr/scriptbook/issues[Request Feature]
 endif::[]
+
+== Overview
+
 **Scriptbook** runs CentrMark (`.cmk`) playbooks on your machine and records output in **sidecars** — never by rewriting the document. Think Jupyter for scripts: narrative + `::: step` cells, playable from a CLI (DevCentr GUI later).
+
 * Markup: CentrMark `::: playbook` / `::: step` (see `spec/playbook-profile.adoc`)
 * Engine: **PlayTime** (the `lib/` package) — binds intents, detects the host, runs commands
 * App: **Scriptbook** CLI (`scriptbook`) — later also a DevCentr GUI
 * Output: `<file.cmk>.runs/` (`spec/sidecar.adoc`)
 * Do **not** translate bash into PowerShell. Name an intent (`cli.install`) and let PlayTime ask the Equivalence Engine.
+
 SLP / `::: tangle` is for **source** literate programming. Scriptbook is for **run on my machine** docs.
 
 Illustrated model: link:https://docs.devcentr.org/general-knowledge/latest/explanation/infrastructure/abstract-playbooks.html[Abstract playbooks]. Component: link:https://docs.devcentr.org/tools/scriptbook/[Explore the docs »]. Essay: link:https://devcentr.org/news/2026-08-13-intents-not-shell-translation[Intents, not shell translation].
