@@ -1,5 +1,10 @@
 = Changelog
 
+== 2026-09-27 — README header badges
+
+* Centered GitHub banner: CI workflow badge and *Docs | Dev-Centr* link to https://docs.devcentr.org/tools/scriptbook/[Antora component].
+* Non-GitHub AsciiDoc render path: matching CI and docs badges beside existing contributor/license shields.
+
 == 2026-09-26 - Playtime SVG dark-text vars
 
 * Adapt duplicated `playtime-*.svg` baked figures so Mermaid `#my-svg` fill / `.label` color use `color.text.primary` themed-svg vars (keeps dark-mode text readable; matches general-knowledge pipeline).

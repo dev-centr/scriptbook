@@ -12,10 +12,13 @@ ifdef::env-github[]
 <a href="https://github.com/dev-centr/scriptbook/stargazers"><img src="https://img.shields.io/github/stars/dev-centr/scriptbook.svg?style=for-the-badge" alt="Stars"></a>
 <a href="https://github.com/dev-centr/scriptbook/issues"><img src="https://img.shields.io/github/issues/dev-centr/scriptbook.svg?style=for-the-badge" alt="Issues"></a>
 <a href="https://github.com/dev-centr/scriptbook/blob/main/LICENSE"><img src="https://img.shields.io/github/license/dev-centr/scriptbook.svg?style=for-the-badge" alt="License"></a>
+<a href="https://github.com/dev-centr/scriptbook/actions/workflows/ci.yml"><img src="https://github.com/dev-centr/scriptbook/actions/workflows/ci.yml/badge.svg" alt="Build status"></a>
+<a href="https://docs.devcentr.org/tools/scriptbook/"><img src="https://img.shields.io/badge/Docs-Dev--Centr-0078D4?style=for-the-badge" alt="Docs | Dev-Centr"></a>
 <br />
 <h3 align="center">Scriptbook</h3>
 <p align="center">
-Scriptbook: play CentrMark .cmk script documents; sidecar run output (never rewrites the doc).<br /><br />
+Scriptbook: play CentrMark .cmk script documents; sidecar run output (never rewrites the doc).<br />
+<a href="https://docs.devcentr.org/tools/scriptbook/"><strong>Explore the docs »</strong></a><br /><br />
 <a href="https://github.com/dev-centr/scriptbook/issues">Report Bug</a>
 &middot;
 <a href="https://github.com/dev-centr/scriptbook/issues">Request Feature</a>
@@ -30,6 +33,8 @@ image:https://img.shields.io/github/forks/dev-centr/scriptbook.svg?style=for-the
 image:https://img.shields.io/github/stars/dev-centr/scriptbook.svg?style=for-the-badge[Stars,link=https://github.com/dev-centr/scriptbook/stargazers]
 image:https://img.shields.io/github/issues/dev-centr/scriptbook.svg?style=for-the-badge[Issues,link=https://github.com/dev-centr/scriptbook/issues]
 image:https://img.shields.io/github/license/dev-centr/scriptbook.svg?style=for-the-badge[License,link=https://github.com/dev-centr/scriptbook/blob/main/LICENSE]
+image:https://github.com/dev-centr/scriptbook/actions/workflows/ci.yml/badge.svg[Build status,link=https://github.com/dev-centr/scriptbook/actions/workflows/ci.yml]
+image:https://img.shields.io/badge/Docs-Dev--Centr-0078D4?style=for-the-badge[Docs | Dev-Centr,link=https://docs.devcentr.org/tools/scriptbook/]
 
 = Scriptbook
 
