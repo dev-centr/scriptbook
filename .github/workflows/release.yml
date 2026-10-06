@@ -26,16 +26,16 @@ jobs:
             artifact: scriptbook-windows-x86_64
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           path: scriptbook
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: dev-centr/libequivalence
           path: libequivalence
 
-      - uses: dlang-community/setup-dlang@v1
+      - uses: dlang-community/setup-dlang@v2
         with:
           compiler: ldc-latest
 
@@ -61,7 +61,7 @@ jobs:
           Copy-Item cli\bin\scriptbook.exe "dist\${{ matrix.artifact }}.exe"
           Compress-Archive -Path "dist\${{ matrix.artifact }}.exe" -DestinationPath "dist\${{ matrix.artifact }}.zip"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.artifact }}
           path: |
@@ -72,9 +72,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: artifacts
 

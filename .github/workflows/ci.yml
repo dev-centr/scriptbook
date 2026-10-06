@@ -10,7 +10,7 @@ jobs:
   diagram-deliveries:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check canonical PlayTime diagrams
         run: python scripts/sync-playtime-diagrams.py --check
@@ -22,24 +22,24 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           path: scriptbook
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: dev-centr/libequivalence
           path: libequivalence
 
       - name: Install LDC (Linux)
         if: runner.os == 'Linux'
-        uses: dlang-community/setup-dlang@v1
+        uses: dlang-community/setup-dlang@v2
         with:
           compiler: ldc-latest
 
       - name: Install LDC (Windows)
         if: runner.os == 'Windows'
-        uses: dlang-community/setup-dlang@v1
+        uses: dlang-community/setup-dlang@v2
         with:
           compiler: ldc-latest
 
