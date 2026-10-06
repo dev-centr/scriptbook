@@ -38,3 +38,5 @@
 **/*.o
 **/*.lst
 **/*.cmk.runs/
+!/.editorconfig
+!/.gitattributes
