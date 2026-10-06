@@ -70,7 +70,7 @@ DISALLOWED_ELEMENTS = {
     "set",
     "video",
 }
-MOJIBAKE_MARKERS = ("â€", "Ã", "Â", "\ufffd")
+MOJIBAKE_MARKERS = ("â€", "Ã", "Â", "\ufffd")  # mojibake-guard: allow
 ROOT = Path(__file__).resolve().parents[1]
 
 
