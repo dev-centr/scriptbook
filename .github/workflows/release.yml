@@ -67,6 +67,7 @@ jobs:
           path: |
             scriptbook/dist/*.tar.gz
             scriptbook/dist/*.zip
+          retention-days: 1
 
   publish:
     needs: build
