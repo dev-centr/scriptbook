@@ -43,5 +43,5 @@ PlayTime is being built here. It rhymes with OpenShellOrg (argv honesty, host id
 
 * Essay: link:https://devcentr.org/news/2026-08-13-intents-not-shell-translation[Intents, not shell translation]
 * xref:platforms:specifications:features/scriptbook-system-playbooks.adoc[DevCentr feature spec]
-* xref:tools:equivalence-engine:host-awareness.adoc[Equivalence Engine: Host Awareness]
+* xref:tools:scriptbook:host-awareness.adoc[Host awareness]
 * OpenShellOrg: link:https://docs.opensh.org/shell-architecture/playtime-at-the-shell-boundary.html[PlayTime at the shell boundary]
