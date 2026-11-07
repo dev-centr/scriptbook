@@ -1,10 +1,20 @@
 = Changelog
 
-== 2026-10-17 — Hub xref for Host awareness
+== 2026-11-07
+
+=== Refresh documentation destinations
+
+* Update links to canonical folder URLs and the current news/blog article slugs. Replace retired references with available authoritative resources; private repositories remain explicitly access-controlled examples.
+
+== 2026-10-17
+
+=== Hub xref for Host awareness
 
 * Docs index: xref target `tools:scriptbook:host-awareness.adoc` (was stale `tools:equivalence-engine:host-awareness.adoc`).
 
-== 2026-09-26 - Playtime SVG dark-text vars
+== 2026-09-26
+
+=== Playtime SVG dark-text vars
 
 * Adapt duplicated `playtime-*.svg` baked figures so Mermaid `#my-svg` fill / `.label` color use `color.text.primary` themed-svg vars (keeps dark-mode text readable; matches general-knowledge pipeline).
 
